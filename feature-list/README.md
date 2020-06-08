@@ -2,12 +2,12 @@
 
 - Stories
   - Attributes
-        - Headline
-        - Image
+    - Headline
+    - Image
   - Views
-        - article-gallery
-        - article
-        - main-page
+    - article-gallery
+    - article
+    - main-page
 - Commenting on stories
 - Follows and feed
 - Likes
