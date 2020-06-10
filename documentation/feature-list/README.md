@@ -3,7 +3,9 @@
 - Stories
   - Attributes
     - Headline
-    - Image
+    - Image - tricky: amazon s3 ? Predefined Gallery ?
+    - body
+    - author
   - Views
     - article-gallery
     - article
@@ -11,6 +13,11 @@
 - Commenting on stories
 - Follows and feed
 - Likes
-- Login/Logout/SignUp ??
+- Login/Logout/SignUp
+  - Authentication Login/Logout
+  - Authorization
+  - SignUp & user accounts
+    - Demo account: can only see own content
+      - New account created each time?
 - Bonus: Topics/categories
 - Bonus: Bookmarks
