@@ -45,4 +45,5 @@
 - Bonus: Topics/categories
 - Bonus: Bookmarks
 
+## Minimum Viable Product ERD
 ![ERD MVP Diagram](https://github.com/AaronTheBruce/maximum/blob/master/documentation/feature-packets/images/Maximum%20MVP.png)
