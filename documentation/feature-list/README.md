@@ -16,6 +16,8 @@
       - view all articles or and individual article
     - main-page   /
       - root route will display all the article 
+- Profiles
+  - Attributes
 - Commenting on stories
   - Attributes
     - CommentBody
