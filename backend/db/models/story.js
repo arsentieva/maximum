@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Story.belongsTo(models.User, { foreignKey: 'userId' });
     Story.hasMany(models.Comment, { foreignKey: 'storyId' });
+    Story.belongsToMany({ through: 'StoryClaps', foreignKey: 'storyId', otherKey: 'userId' });
   };
   return Story;
 };
