@@ -20,6 +20,15 @@ signUpForm.addEventListener("submit", async (event) => {
     if (!res.ok) {
       throw res;
     }
+    const {
+      token,
+      user: { id },
+    } = await res.json();
+    // storage access_token in localStorage:
+    localStorage.setItem("MAXIMUM_ACCESS_TOKEN", token);
+    localStorage.setItem("MAXIMUM_CURRENT_USER_ID", id);
+    // redirect to home page to see all stories:
+    window.location.href = "/";
   } catch (err) {
     //TODO handle errors in one common place
     console.log(err);
