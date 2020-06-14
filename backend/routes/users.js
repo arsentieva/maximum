@@ -24,8 +24,8 @@ router.post(
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ name, bio, image, email, hashedPassword });
 
-    // const token = getUserToken(user);
-    res.status(201).json({ user: { id: user.id } });
+    const token = getUserToken(user);
+    res.status(201).json({ user: { id: user.id }, token });
   })
 );
 router.get(
