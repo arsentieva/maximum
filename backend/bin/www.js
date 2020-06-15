@@ -1,4 +1,4 @@
-const {port } = require("../config");
+const { port } = require("../config/index");
 
 const app = require("../app");
 const db = require("../db/models");
