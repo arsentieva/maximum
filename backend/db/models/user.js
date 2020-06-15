@@ -20,8 +20,19 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Comment, { foreignKey: "userId" });
     User.hasMany(models.Follow, { foreignKey: "followedId" });
     User.hasMany(models.Follow, { foreignKey: "followerId" });
-    // User.belongsToMany({ through: 'StoryClaps', foreignKey: 'userId', otherKey:'storyId'});
-    // User.belongsToMany({ through: 'CommentClaps', foreignKey: 'userId', otherKey:'commentId'});
+
+    const columnStoryClapMapping = {
+      through: "StoryClap",
+      foreignKey: "userId",
+      otherKey: "storyId",
+    };
+    const columnCommentClapMapping = {
+      through: "CommentClap",
+      foreignKey: "userId",
+      otherKey: "commentId",
+    };
+    User.belongsToMany(models.Story, columnStoryClapMapping);
+    User.belongsToMany(models.Comment, columnCommentClapMapping);
   };
   return User;
 };
