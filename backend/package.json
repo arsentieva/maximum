@@ -12,11 +12,16 @@
     "type": "git",
     "url": "git+https://github.com/AaronTheBruce/maximum.git"
   },
-  "keywords": [],
+  "keywords": [
+    "heroku"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AaronTheBruce/maximum/issues"
+  },
+  "engines": {
+    "node": "10.x"
   },
   "homepage": "https://github.com/AaronTheBruce/maximum#readme",
   "dependencies": {
