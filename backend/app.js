@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 
+const environment = require("./config/index").environment;
 const userRouter = require("./routes/users");
 
 const app = express();
