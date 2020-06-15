@@ -1,10 +1,14 @@
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
+
 const userRouter = require("./routes/users");
 
 const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:4001" }));
+
 app.use("/users", userRouter);
 
 // Error handlers. (must have all four arguments to communicate to Express that
