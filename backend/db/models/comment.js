@@ -22,7 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Comment.belongsTo(models.Story, { foreignKey: "storyId" });
     Comment.belongsTo(models.User, { foreignKey: "userId" });
-    // Comment.belongsToMany({ through: 'CommentClaps', foreignKey: 'commentId', otherKey:'userId'});
+    const columnMapping = {
+      through: "CommentClap",
+      foreignKey: "commentId",
+      otherKey: "userId",
+    };
+    Comment.belongsToMany(models.User, columnMapping);
   };
   return Comment;
 };
