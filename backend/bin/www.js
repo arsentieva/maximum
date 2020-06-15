@@ -3,6 +3,8 @@ const { port } = require("../config/index");
 const app = require("../app");
 const db = require("../db/models");
 
+const myPort = Number.parseInt(port, 10) || 8081;
+
 // Check the database connection before starting the app.
 db.sequelize
   .authenticate()
@@ -10,7 +12,7 @@ db.sequelize
     console.log("Database connection success! Sequelize is ready to use...");
 
     // Start listening for connections.
-    app.listen(port, () => console.log(`Listening on port ${port}...`));
+    app.listen(myPort, () => console.log(`Listening on port ${myPort}...`));
   })
   .catch((err) => {
     console.log("Database connection failure.");
