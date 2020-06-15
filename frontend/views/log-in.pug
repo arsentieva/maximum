@@ -1,0 +1,17 @@
+extends layout.pug
+
+block content
+  div(class="log-in-container")
+    div(class="errors-container")
+    h2 Log In
+    form(class="log-in-form")
+      .form-group
+        label(for='email') Email address
+        input#email.form-control(type='email', name="email", placeholder='Enter email')
+      .form-group
+        label(for='password') Password
+        input#password.form-control(type='password', name="password", placeholder='Password')
+
+      button.btn.btn-primary(type='submit') Log In
+    a(href='/sign-up') Don't have an account? Sign up here.
+  script(src="scripts/log-in.js")
