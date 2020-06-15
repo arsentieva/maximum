@@ -1,5 +1,3 @@
-// #!/usr/bin/env node
-
 const {port } = require("../config");
 
 const app = require("../app");
