@@ -1,5 +1,5 @@
 const fetchStories = async () => {
-  const res = await fetch("http://localhost:8080/stories", {
+  const res = await fetch("http://localhost:8085/stories", {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
     },
@@ -9,9 +9,10 @@ const fetchStories = async () => {
     return;
   }
   const { stories } = await res.json();
+  console.log(stories);
   const storiesContainer = document.querySelector(".stories-container");
   const storiesHtml = stories.map(
-    ({ title, user: { name } }) => `
+    ({ title }) => `
         <div class="card">
           <div class="card-header">
             ${name}
@@ -24,3 +25,11 @@ const fetchStories = async () => {
   );
   storiesContainer.innerHTML = storiesHtml.join("");
 };
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    await fetchStories();
+  } catch (e) {
+    console.error(e);
+  }
+});
