@@ -9,11 +9,6 @@
     "start:production": "node ./bin/www.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "production": {
-    "dialect": "postgres",
-    "seederStorage": "sequelize",
-    "use_env_variable": "DATABASE_URL"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AaronTheBruce/maximum.git"
