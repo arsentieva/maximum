@@ -1,5 +1,5 @@
 const fetchStories = async () => {
-  const res = await fetch("http://localhost:8080/stories", {
+  const res = await fetch("http://localhost:8085/stories", {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
     },
