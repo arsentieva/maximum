@@ -6,14 +6,22 @@ const app = express();
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "public")));
 
+// Define a route.
+app.get("/", (req, res) => {
+  res.render("index"); //TODO check if the index.pug file exists and it is setup
+});
+
 app.get("/sign-up", (req, res) => {
   res.render("sign-up", { title: "Sign up page" });
 });
 
 app.get("/log-in", (req, res) => {
-  res.render('log-in');
-})
+  res.render("log-in");
+});
 
+app.get("/stories", (req, res) => {
+  res.render("index");
+});
 
 // searches for a provided port by heroku or sets to port
 var port = process.env.PORT || 4001;
