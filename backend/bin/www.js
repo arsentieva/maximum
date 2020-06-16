@@ -3,7 +3,7 @@ const { port } = require("../config/index");
 const app = require("../app");
 const db = require("../db/models");
 
-const myPort = Number.parseInt(port, 10) || 8081;
+const myPort = Number.parseInt(port, 10) || 8085;
 
 // Check the database connection before starting the app.
 db.sequelize
