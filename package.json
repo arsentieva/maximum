@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "start:development": "nodemon index.js",
     "start:production": "node index.js"
   },
   "keywords": [],
