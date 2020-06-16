@@ -8,13 +8,7 @@ block content
       .form-group
         label(for='name') Name
         input#username.form-control(type='text' name='name' placeholder="Name")
-      .form-group
-        label(for='email') Email address
-        input#email.form-control(type='email', name="email", placeholder='Enter email')
-      .form-group
-        label(for='password') Password
-        input#password.form-control(type='password', name="password", placeholder='Password')
-
+      include includes/auth-form-fields
       button.btn.btn-primary(type='submit') Sign Up
     a(href='/log-in') Already have an account? Log in here.
   script(type="module" src="scripts/sign-up.js")
