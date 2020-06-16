@@ -9,9 +9,10 @@ const fetchStories = async () => {
     return;
   }
   const { stories } = await res.json();
+  console.log(stories);
   const storiesContainer = document.querySelector(".stories-container");
   const storiesHtml = stories.map(
-    ({ title, user: { name } }) => `
+    ({ title }) => `
         <div class="card">
           <div class="card-header">
             ${name}
@@ -24,3 +25,11 @@ const fetchStories = async () => {
   );
   storiesContainer.innerHTML = storiesHtml.join("");
 };
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    await fetchStories();
+  } catch (e) {
+    console.error(e);
+  }
+});

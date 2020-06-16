@@ -14,7 +14,7 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const stories = await Story.findAll({
-      include: [{ model: User, as: "user", attributes: ["name"] }],
+      include: { model: User, as: "user", attributes: ["name"] },
       order: [["createdAt", "DESC"]],
       attributes: ["title"], //TODO maybe other attributes or more
     });
