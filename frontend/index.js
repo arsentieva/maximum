@@ -23,9 +23,10 @@ app.get("/stories", (req, res) => {
   res.render("index");
 });
 
-const port = 4001;
+// searches for a provided port by heroku or sets to port
+var port = process.env.PORT || 4001;
 app.listen(port, () => {
-  console.log(`Listing on port ${port}...`);
+  console.log(`Listening on port ${port}...`);
 });
 
 module.exports = app;
