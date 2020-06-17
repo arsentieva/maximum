@@ -32,15 +32,10 @@ const validateEmailAndPassword = [
     .withMessage("Please provide a password"),
 ];
 
-validateComment = [
+const validateComment = [
   check("body")
-      .exists({ checkFalsy: true, checkNull: true })
-      .withMessage("Comment can't be empty."),
-  check("createdAt")
-      .exists({ checkFalsy: true, checkNull: true }),
-  check("userId")
-      .exists({ checkFalsy: true })
-      .isLength({ max: 500 }),
+    .exists({ checkFalsy: true })
+    .withMessage("Comment can't be empty."),
   handleValidationErrors,
   // TODO add remaining validation
 ];

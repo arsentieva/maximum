@@ -4,7 +4,6 @@ const { handleValidationErrors, validateComment, asyncHandler } = require("../ut
 const { requireAuth } = require("../auth");
 const router = express.Router();
 const db = require("../db/models");
-const { noExtendLeft } = require("sequelize/types/lib/operators");
 
 const { Story, User, Comment } = db;
 
@@ -15,14 +14,13 @@ router.get("/:id/comments", asyncHandler(async (req, res) => {
     const storyId = req.params.id;
     const comments = await Comment.findAll({
         include: [
-            { model: Story, where: { id: storyId }, },
-            { model: User, attributes: ["name"] }
+            { model: Story, where: { id: storyId }, attributes: ["id", "title", "userId"] },
+            { model: User, attributes: ["id", "name"] }
         ],
         order: [["createdAt", "DESC"]],
         attributes: ["id", "body", "createdAt", "updatedAt"],
     });
-    const { id, body, createdAt, userId } = comments;
-    res.json({ id, body, createdAt, userId });
+    res.json({ comments });
 }));
 
 function commentNotFoundError(id) {
@@ -33,39 +31,40 @@ function commentNotFoundError(id) {
     return err;
 }
 
-router.post("/:id/comments", validateComment, handleValidationErrors, asyncHandler(async (req, res) => {
+router.post("/:id/comments", validateComment, asyncHandler(async (req, res) => {
     const storyId = req.params.id;
-    const { body, createdAt, userId } = req.body; // TODO Anything Else?
+    const userId = req.user.id;
+    const { body } = req.body; // TODO Anything Else?
     const comment = await Comment.create({
         body,
-        storyId,
         userId,
-        createdAt,
+        storyId,
     });
     res.json({ comment });
 }));
 
-router.put("/:id/comments/:commentId", validateComment, handleValidationErrors, asyncHandler(async (req, res, next) => {
-    const userId = req.user.id;
+router.put("/:storyId/comments/:commentId", validateComment, handleValidationErrors, asyncHandler(async (req, res, next) => {
     // TODO Not sure if needed for processing a comment update
     // const storyId = req.params.id;
     // const story = await Story.findOne({
     //     where: { id: storyId }
     // });
+    const userId = req.user.id;
     const commentId = req.params.commentId;
+    const storyId = req.params.storyId;
     const comment = await Comment.findOne({
         where: { id: commentId }
     });
-    if(userId.toString() !== comment.userId.toString()) {
+    if (userId.toString() !== comment.userId.toString()) {
         const err = new Error("Unauthorized");
         err.status = 401;
         err.message = "You are not authorized to edit this comment.";
         err.title = "Unauthorized"
         throw err;
     }
-    if(comment) {
+    if (comment) {
         const { body } = req.body;
-        await comment.update({ body, updatedAt: new Date(), userId });
+        await comment.update({ body, updatedAt: new Date(), userId, storyId });
         res.json({ comment });
     } else {
         next(commentNotFoundError(commentId));
