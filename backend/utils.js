@@ -34,6 +34,13 @@ const validateEmailAndPassword = [
   handleValidationErrors,
 ];
 
+const validateComment = [
+  check("body")
+    .exists({ checkFalsy: true })
+    .withMessage("Comment can't be empty."),
+  handleValidationErrors,
+  // TODO add remaining validation
+];
 const validateStory = [
   check("title")
     .exists({ checkFalsy: true })
@@ -53,5 +60,6 @@ module.exports = {
   asyncHandler,
   validateUserInfo,
   validateEmailAndPassword,
+  validateComment,
   validateStory,
 };
