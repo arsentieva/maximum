@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const { User } = require("../db/models");
 const { getUserToken } = require("../auth");
+
 const {
   asyncHandler,
   handleValidationErrors,
@@ -33,6 +34,7 @@ router.post(
 router.post(
   "/token",
   validateEmailAndPassword,
+  handleValidationErrors,
   asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({
@@ -50,6 +52,46 @@ router.post(
     }
     const token = getUserToken(user);
     res.json({ token, user: { id: user.id } });
+  })
+);
+
+function userNotFoundError(id) {
+  const err = Error("User not found");
+  err.errors = [`User with id of ${id} could not be found.`];
+  err.title = "User not found.";
+  err.status = 404;
+  return err;
+}
+//Allow USER record to be updated
+router.put(
+  "/:id",
+  validateUserInfo,
+  handleValidationErrors,
+  asyncHandler(async (req, res, next) => {
+    const userId = req.params.id;
+    const user = await User.findOne({ where: { id: userId } });
+    if (user === null) {
+      next(userNotFoundError(userId));
+      return;
+    }
+    if (userId !== user.id.toString()) {
+      const err = new Error("Unauthorized");
+      err.status = 401;
+      err.message = "You are not authorized to edit this story.";
+      err.title = "Unauthorized";
+      throw err;
+    }
+
+    if (user) {
+      const { name, email, image, bio } = req.body;
+      await user.update({ name, email, image, bio });
+      res.json({
+        name: user.name,
+        bio: user.bio,
+        email: user.email,
+        image: user.image,
+      });
+    }
   })
 );
 
