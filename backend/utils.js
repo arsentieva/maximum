@@ -21,6 +21,7 @@ const validateUserInfo = [
   check("name")
     .exists({ checkFalsy: true })
     .withMessage("Please provide your name"),
+  handleValidationErrors,
 ];
 const validateEmailAndPassword = [
   check("email")
@@ -30,6 +31,7 @@ const validateEmailAndPassword = [
   check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a password"),
+  handleValidationErrors,
 ];
 
 const validateStory = [
@@ -45,12 +47,10 @@ const validateStory = [
     .isLength({ max: 140 })
     .withMessage("Byline can't be longer than 140 characters."),
   handleValidationErrors,
-  //TODO add the remaining validation
 ];
 
 module.exports = {
   asyncHandler,
-  handleValidationErrors,
   validateUserInfo,
   validateEmailAndPassword,
   validateStory,

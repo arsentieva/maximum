@@ -47,13 +47,13 @@ router.get(
   })
 );
 
-//Create a new sotry
+//Create a new story
 router.post(
   "/",
   validateStory,
   asyncHandler(async (req, res) => {
-    const userId = "1"; //TODO replace with  this once it is connected with the front end ====> req.user.id;
-    const { title, byline, body, image } = req.body; //TODO anything else?
+    const userId = req.user.id;
+    const { title, byline, body, image } = req.body;
     const story = await Story.create({
       //TODO should this be in a try/catch block?
       title,
@@ -71,7 +71,7 @@ router.put(
   "/:id",
   validateStory,
   asyncHandler(async (req, res, next) => {
-    const userId = "1"; // req.user.id; //TODO replace with  this once it is connected with the front end ====> req.user.id;
+    const userId = req.user.id;
     const storyId = req.params.id;
     const story = await Story.findOne({
       where: { id: storyId },
