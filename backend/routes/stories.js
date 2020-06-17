@@ -6,11 +6,7 @@ const db = require("../db/models");
 
 const { Story, User } = db;
 
-const {
-  handleValidationErrors,
-  asyncHandler,
-  validateStory,
-} = require("../utils");
+const { asyncHandler, validateStory } = require("../utils");
 
 router.use(requireAuth);
 
@@ -55,7 +51,6 @@ router.get(
 router.post(
   "/",
   validateStory,
-  handleValidationErrors,
   asyncHandler(async (req, res) => {
     const userId = "1"; //TODO replace with  this once it is connected with the front end ====> req.user.id;
     const { title, byline, body, image } = req.body; //TODO anything else?
@@ -75,7 +70,6 @@ router.post(
 router.put(
   "/:id",
   validateStory,
-  handleValidationErrors,
   asyncHandler(async (req, res, next) => {
     const userId = "1"; // req.user.id; //TODO replace with  this once it is connected with the front end ====> req.user.id;
     const storyId = req.params.id;
