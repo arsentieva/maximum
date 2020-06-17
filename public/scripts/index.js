@@ -12,19 +12,43 @@ const fetchStories = async () => {
   console.log(stories);
   const storiesContainer = document.querySelector(".stories-container");
   const storiesHtml = stories.map(
-    ({ title }) => `
-        <div class="card">
-          <div class="card-header">
-            ${name}
-          </div>
-          <div class="card-body">
-            <p class="card-text">${title}</p>
+    ({ title, byline, body, id, User }) => `
+        <div class="story" id="${id}">
+          <div class="story-body">
+            <h3 class="story-title">${title}</h3>
+            <h3 class="story-author">${User.name}</h3>
+            <p class="story-byline">${byline}</p>
+            <p class="story-byline">${body}</p>
           </div>
         </div>
       `
   );
   storiesContainer.innerHTML = storiesHtml.join("");
 };
+
+const handleClick = (storyId) => {
+  return async () => {
+    try {
+      console.log(storyId);
+      let url = `http://localhost:8085/stories/${storyId}`;
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw res;
+      }
+      const selectedStory = document.querySelector(`#${storyId}`);
+      //tODO redirect to this story
+    } catch (err) {
+      console.error(err);
+    }
+  };
+};
+
+const storyCards = document.querySelectorAll(".story");
+if (storyCards) {
+  storyCards.forEach((storyCard) => {
+    storyCard.addEventListener("click", handleClick(storyCard.id));
+  });
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
