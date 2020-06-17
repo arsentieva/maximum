@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "per-env",
     "start:development": "nodemon index.js",
     "start:production": "node index.js"
   },
@@ -16,6 +16,7 @@
     "pug": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "per-env": "^1.0.2"
   }
 }
