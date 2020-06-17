@@ -56,7 +56,7 @@ const validateStory = [
   //  message cannot be longer than 280 characters:
   check("byline")
     .isLength({ max: 140 })
-    .withMessage("Byline can't be longer than140 characters."),
+    .withMessage("Byline can't be longer than 140 characters."),
   handleValidationErrors,
   //TODO add the remaining validation
 ];
