@@ -1,3 +1,6 @@
+import { authorCardBuilder } from './util.js';
+
+console.log(authorCardBuilder);
 const fetchStories = async () => {
   const res = await fetch("http://localhost:8085/stories", {
     headers: {
@@ -12,13 +15,17 @@ const fetchStories = async () => {
   console.log(stories);
   const storiesContainer = document.querySelector(".stories-container");
   const storiesHtml = stories.map(
-    ({ title, byline, body, id, User }) => `
+    ({ title, byline, id, User, createdAt }) => `
         <div class="story" id="${id}">
           <div class="story-body">
+            <div class="story-image">
+              <img src="/images/story-images/${id}.jpg">
+            </div>
             <h3 class="story-title">${title}</h3>
-            <h3 class="story-author">${User.name}</h3>
             <p class="story-byline">${byline}</p>
-            <p class="story-byline">${body}</p>
+            <div class="author-card">
+              ${authorCardBuilder(User, createdAt)}
+            </div>
           </div>
         </div>
       `
