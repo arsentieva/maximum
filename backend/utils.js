@@ -44,6 +44,21 @@ validateComment = [
   handleValidationErrors,
   // TODO add remaining validation
 ];
+const validateStory = [
+  check("title")
+    .exists({ checkFalsy: true })
+    .withMessage("Story title can't be empty.")
+    .isLength({ max: 70 })
+    .withMessage("Story can't be longer than 70 characters."),
+  check("body")
+    .exists({ checkFalsy: true })
+    .withMessage("Story body can't be empty."),
+  check("byline")
+    .isLength({ max: 140 })
+    .withMessage("Byline can't be longer than 140 characters."),
+  handleValidationErrors,
+  //TODO add the remaining validation
+];
 
 module.exports = {
   asyncHandler,
@@ -51,4 +66,5 @@ module.exports = {
   validateUserInfo,
   validateEmailAndPassword,
   validateComment,
+  validateStory,
 };
