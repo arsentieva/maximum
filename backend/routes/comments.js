@@ -20,6 +20,9 @@ router.get("/:id/comments", asyncHandler(async (req, res) => {
         attributes: ["id", "body", "createdAt", "updatedAt"],
     });
     res.json({ comments });
+    res.render('comments', {
+        comments,
+    })
 }));
 
 function commentNotFoundError(id) {
