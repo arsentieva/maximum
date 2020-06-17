@@ -14,7 +14,7 @@ app.use(cors({ origin: "http://localhost:4001" }));
 
 app.use("/users", userRouter);
 app.use("/stories", storiesRouter);
-app.use("/stories/:id/comments", commentsRouter);
+app.use("/stories", commentsRouter);
 
 // Process sequelize errors
 app.use((err, req, res, next) => {
