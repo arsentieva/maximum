@@ -6,22 +6,30 @@ const { getUserToken } = require("../auth");
 
 const {
   asyncHandler,
-  handleValidationErrors,
   validateUserInfo,
   validateEmailAndPassword,
 } = require("../utils");
 
 const router = express.Router();
 
+//GET A USER BY ID
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    console.log(req.params.id);
+    const user = await User.findByPk(parseInt(req.params.id, 10));
+    const token = getUserToken(user);
+    res.status(201).json({ user: { id: user.id }, token });
+  })
+);
+
 //CREATE A USER
 router.post(
   "/",
   validateUserInfo,
   validateEmailAndPassword,
-  handleValidationErrors,
   asyncHandler(async (req, res) => {
     const { name, bio, image, email, password } = req.body;
-    console.log(name);
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ name, bio, image, email, hashedPassword });
 
@@ -34,7 +42,6 @@ router.post(
 router.post(
   "/token",
   validateEmailAndPassword,
-  handleValidationErrors,
   asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({
@@ -66,7 +73,6 @@ function userNotFoundError(id) {
 router.put(
   "/:id",
   validateUserInfo,
-  handleValidationErrors,
   asyncHandler(async (req, res, next) => {
     const userId = req.params.id;
     const user = await User.findOne({ where: { id: userId } });
