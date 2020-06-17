@@ -1,6 +1,5 @@
 const express = require("express");
-const { check } = require("express-validator");
-const { handleValidationErrors, validateComment, asyncHandler } = require("../utils");
+const { validateComment, asyncHandler } = require("../utils");
 const { requireAuth } = require("../auth");
 const router = express.Router();
 const db = require("../db/models");
@@ -43,7 +42,7 @@ router.post("/:id/comments", validateComment, asyncHandler(async (req, res) => {
     res.json({ comment });
 }));
 
-router.put("/:storyId/comments/:commentId", validateComment, handleValidationErrors, asyncHandler(async (req, res, next) => {
+router.put("/:storyId/comments/:commentId", validateComment, asyncHandler(async (req, res, next) => {
     // TODO Not sure if needed for processing a comment update
     // const storyId = req.params.id;
     // const story = await Story.findOne({
