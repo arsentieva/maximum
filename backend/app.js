@@ -5,6 +5,7 @@ const cors = require("cors");
 const environment = require("./config/index").environment;
 const userRouter = require("./routes/users");
 const storiesRouter = require("./routes/stories");
+const commentsRouter = require("./routes/comments");
 
 const app = express();
 app.use(morgan("dev"));
@@ -13,6 +14,7 @@ app.use(cors({ origin: "http://localhost:4001" }));
 
 app.use("/users", userRouter);
 app.use("/stories", storiesRouter);
+app.use("/stories/:id/comments", commentsRouter);
 
 // Process sequelize errors
 app.use((err, req, res, next) => {
