@@ -10,7 +10,7 @@ module.exports = {
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
-        userId: 3
+        userId: 1
       },
       {
         title: 'Ice Cream is Great!',
@@ -19,7 +19,7 @@ module.exports = {
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
-        userId: 3
+        userId: 1
       },
       {
         title: 'Things Average People Love To Do',
@@ -28,7 +28,7 @@ module.exports = {
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
-        userId: 4
+        userId: 2
       },
     ], {});
   },
