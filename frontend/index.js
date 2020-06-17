@@ -20,7 +20,14 @@ app.get("/log-in", (req, res) => {
 });
 
 app.get("/stories", (req, res) => {
+  console.log(req.url);
   res.render("index");
+});
+
+app.get("/stories/:id(\\d+)", (req, res) => {
+  debugger;
+  console.log(req.url);
+  res.render("story", { title: "Looking at a story" });
 });
 
 const port = 4001;

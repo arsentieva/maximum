@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     console.log("did this console logged");
+    const id = req.params.id;
     const res = await fetch(`http://localhost:8085/stories/${id}/`);
     if (res.status === 404) {
       window.location.href = "/"; //TODO where should we redirect
