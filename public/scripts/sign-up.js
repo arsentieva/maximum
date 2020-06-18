@@ -1,3 +1,5 @@
+import { backendURL } from "./util.js";
+
 const signUpForm = document.querySelector(".sign-up-form");
 
 signUpForm.addEventListener("submit", async (event) => {
@@ -9,7 +11,8 @@ signUpForm.addEventListener("submit", async (event) => {
   const password = formData.get("password");
   const body = { email, password, name };
   try {
-    const res = await fetch("http://localhost:8085/users", {
+    let url = `${backendURL}/users/token`;
+    const res = await fetch(url, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {
