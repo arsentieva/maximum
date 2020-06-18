@@ -1,21 +1,62 @@
+import { authorCardBuilder, backendURL } from './util.js';
+
 const fetchComments = async (storyId) => {
-    const res = await fetch(`http://localhost:8085/stories${storyId}/comments`, {
+    const res = await fetch(`${backendURL}/stories${storyId}/comments`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
         },
     });
-    if(res.status === 401) {
+    if (res.status === 401) {
         window.location.href = "/log-in";
         return;
     }
     const { comments } = await res.json();
-
+    console.log(comments);
     const commentsContainer = document.querySelector(".comments-container");
-    const storiesHtml = stories.map(
-        ({ id, body, userId, storyId, createdAt, updatedAt }) => `
+    const commentsHtml = comments.map(
+        ({ id, body, User, storyId, createdAt, updatedAt }) => `
             <div class="comment" id="${id}">
                 <div class="comment-body">
-                    <h3 class="comment-creation_date"
+                    <div class="author-card">
+                        ${authorCardBuilder(User, createdAt)}
+                    </div>
+                    <p class="comment-body">${body}</p>
+                </div>
+            </div>
         `
-    )
+    );
+    commentsContainer.innerHTML = commentsHtml.join("");
+};
+
+const handleClick = (commentId) => {
+    return async () => {
+        try {
+            console.log(commentId);
+            let url = `${backendURL}/stories/${commentId}/comments`;
+            const res = await fetch(url);
+            if (!res.ok) {
+                throw res;
+            }
+            const selectedComment = document.querySelector(`#${commentId}`);
+            //TODO redirect to this comment
+        } catch (err) {
+            console.error(err);
+        }
+    };
 }
+
+const commentCards = document.querySelectorAll(".comment");
+if (commentCards) {
+    commentCards.forEach((commentCard) => {
+        commentCard.addEventListener("click", handleClick(storyCard.id));
+    });
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        // TODO I need to find how to obtain an id to pass into fetchComments
+        await fetchComments();
+    } catch (e) {
+        console.error(e);
+    }
+});
