@@ -1,3 +1,5 @@
+import { backendURL } from "./util.js";
+
 const signUpForm = document.querySelector(".sign-up-form");
 
 signUpForm.addEventListener("submit", async (event) => {
