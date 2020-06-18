@@ -1,0 +1,9 @@
+.story-container {
+  display: flex;
+  justify-content: center;
+}
+
+.story-container .story-title {
+  font-size: 4em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
