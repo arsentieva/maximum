@@ -1,4 +1,4 @@
-const { backendURL } = require("./util");
+import { backendURL } from "./util";
 
 const logInForm = document.querySelector(".log-in-form");
 
