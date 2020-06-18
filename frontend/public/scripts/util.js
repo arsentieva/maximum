@@ -1,16 +1,14 @@
 export function authorCardBuilder(User, datePublished) {
-// const authorCardBuilder = (User, datePublished) => {
+  // const authorCardBuilder = (User, datePublished) => {
   return `
 
 
     <div class="author-image">
       <img src="/images/profile-images/1.png">
     </div>
-    <div class="author-text">
-      <p "author-name">${User.name}</p>
-      <p "author-date">${datePublished}</p>
-    </div>
-  `
-};
+  <p "author-date">${datePublished}</p>
+  `;
+}
 
-// module.exports = { authorCardBuilder };
+export const backendURL = "https://radiant-garden-26318.herokuapp.com";
+// export const backendURL = "http://localhost:8085";

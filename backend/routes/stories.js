@@ -37,7 +37,9 @@ router.get(
   asyncHandler(async (req, res, next) => {
     let storyId = parseInt(req.params.id, 10);
     const story = await Story.findOne({
+      include: [{ model: User, attributes: ["name"] }],
       where: { id: storyId },
+      attributes: ["id", "title", "body", "byline", "createdAt"],
     });
     if (story) {
       res.json({ story });
