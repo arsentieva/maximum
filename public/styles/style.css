@@ -1,6 +1,6 @@
 body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
-  background-color: #fffffc;
+  background-color: white;
   /* padding: 40px; */
   box-sizing: border-box;
   margin: 0;
@@ -63,11 +63,27 @@ body {
 }
 
 .author-card {
-
+  display: flex;
+  justify-content: flex-start;
+  height: 45px;
 }
 
 .author-card img {
   width: 45px;
   height: auto;
   border-radius: 50%;
+}
+
+.author-card .author-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  /* text-align: left; */
+
+}
+
+.author-card p {
+  display: flex;
+  margin: auto;
 }
