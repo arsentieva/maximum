@@ -19,7 +19,16 @@ router.get(
     console.log(req.params.id);
     const user = await User.findByPk(parseInt(req.params.id, 10));
     const token = getUserToken(user);
-    res.status(201).json({ user: { id: user.id }, token });
+    res.status(201).json({
+      user: {
+        id: user.id,
+        name: user.name,
+        bio: user.bio,
+        image: user.image,
+        createdAt: user.createdAt,
+      },
+      token,
+    });
   })
 );
 

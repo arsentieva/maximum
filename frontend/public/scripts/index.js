@@ -1,6 +1,5 @@
 import { authorCardBuilder, backendURL } from "./util.js";
 
-console.log(authorCardBuilder);
 const fetchStories = async () => {
   let url = `${backendURL}/stories`;
 
@@ -41,7 +40,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (storyCards) {
       storyCards.forEach((storyCard) => {
         storyCard.addEventListener("click", () => {
-          localStorage.setItem("MAXIMUM_STORY_ID", storyCard.id);
           window.location.href = `/stories/${storyCard.id}`;
         });
       });
