@@ -1,4 +1,4 @@
-// import { authorCardBuilder } from "./util.js";
+import { authorCardBuilder } from "./util.js";
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     let storyId = localStorage.getItem("MAXIMUM_STORY_ID");
@@ -9,17 +9,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       throw res;
     }
     const { story } = await res.json();
+    const { title, byline, id, User, createdAt, body } = story;
     const storyContainer = document.querySelector(".story_container");
-    const storyHTML = ` <div class="story" id="${story.id}">
+    const storyHTML = ` <div class="story" id="${id}">
               <div class="story-body">
+              <h1 class="story-title">${title}</h1>
                   <div class="story-image">
-                  <img src="/images/story-images/${story.id}.jpg">
+                  <img src="/images/story-images/${id}.jpg">
               </div>
-             <h3 class="story-title">${story.title}</h3>
-              <p class="story-byline">${story.byline}</p>
               <div class="author-card">
-                 TODO
+               ${authorCardBuilder(User, createdAt)}
             </div>
+              <p class="story-byline">${byline}</p>
+              <p class="story-body">${body}</p>
       </div>
     </div>
   `;
