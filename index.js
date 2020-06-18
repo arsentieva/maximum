@@ -27,6 +27,10 @@ app.get("/stories/:id(\\d+)", (req, res) => {
   res.render("story");
 });
 
+app.get("/profile", (req, res) => {
+  res.render("profile");
+});
+
 // searches for a provided port by heroku or sets to port
 var port = process.env.PORT || 4001;
 app.listen(port, () => {
