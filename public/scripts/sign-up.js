@@ -1,4 +1,4 @@
-const { backendURL } = require("./util");
+import { backendURL } from "./util";
 
 const signUpForm = document.querySelector(".sign-up-form");
 
