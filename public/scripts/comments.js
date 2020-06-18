@@ -1,7 +1,8 @@
 import { authorCardBuilder, backendURL } from './util.js';
 
 const fetchComments = async (storyId) => {
-    const res = await fetch(`${backendURL}/stories${storyId}/comments`, {
+    let url = `${backendURL}/stories${storyId}/comments`;
+    const res = await fetch( url, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
         },
@@ -55,7 +56,8 @@ if (commentCards) {
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         // TODO I need to find how to obtain an id to pass into fetchComments
-        await fetchComments();
+        let storyId = localStorage.getItem("MAXIMUM_STORY_ID");
+        await fetchComments(storyId);
     } catch (e) {
         console.error(e);
     }

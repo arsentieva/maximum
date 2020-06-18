@@ -3,7 +3,6 @@ import { authorCardBuilder, backendURL } from "./util.js";
 console.log(authorCardBuilder);
 const fetchStories = async () => {
   let url = `${backendURL}/stories`;
-
   const res = await fetch(url, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
