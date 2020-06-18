@@ -1,3 +1,4 @@
+// import { authorCardBuilder } from "./util.js";
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     let storyId = localStorage.getItem("MAXIMUM_STORY_ID");
@@ -16,8 +17,9 @@ document.addEventListener("DOMContentLoaded", async () => {
               </div>
              <h3 class="story-title">${story.title}</h3>
               <p class="story-byline">${story.byline}</p>
-           <div class="author-card">
-        </div>
+              <div class="author-card">
+                 TODO
+            </div>
       </div>
     </div>
   `;
