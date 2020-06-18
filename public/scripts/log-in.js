@@ -1,3 +1,5 @@
+import { backendURL } from "./util.js";
+
 const logInForm = document.querySelector(".log-in-form");
 
 logInForm.addEventListener("submit", async (e) => {
