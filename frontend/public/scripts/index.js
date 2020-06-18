@@ -37,7 +37,6 @@ const handleClick = (storyId) => {
   return async () => {
     try {
       console.log(storyId);
-      // TIP if in development use http://localhost:8085/stories/${storyId}`
       let url = `${backendURL}/stories/${storyId}`;
       const res = await fetch(url);
       if (!res.ok) {
