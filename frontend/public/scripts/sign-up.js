@@ -11,7 +11,6 @@ signUpForm.addEventListener("submit", async (event) => {
   const password = formData.get("password");
   const body = { email, password, name };
   try {
-    // TIP if developing use http://localhost:8085/users
     const res = await fetch(`${backendURL}/users`, {
       method: "POST",
       body: JSON.stringify(body),
