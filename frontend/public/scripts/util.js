@@ -10,6 +10,4 @@ export function authorCardBuilder(User, datePublished) {
 };
 
 export const backendURL = 'https://radiant-garden-26318.herokuapp.com';
-// export const backendURL = 'localhost:8085';
-
-// module.exports = { authorCardBuilder };
+// export const backendURL = 'http://localhost:8085';
