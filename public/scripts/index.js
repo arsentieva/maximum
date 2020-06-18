@@ -1,8 +1,9 @@
-import { authorCardBuilder } from './util.js';
+import { authorCardBuilder, backendURL } from './util.js';
 
 console.log(authorCardBuilder);
 const fetchStories = async () => {
-  const res = await fetch("http://localhost:8085/stories", {
+  // TIP: If developing use 'http://localhost:8085/stories
+  const res = await fetch(`${backendURL}/stories`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
     },
@@ -37,7 +38,8 @@ const handleClick = (storyId) => {
   return async () => {
     try {
       console.log(storyId);
-      let url = `http://localhost:8085/stories/${storyId}`;
+      // TIP if in development use http://localhost:8085/stories/${storyId}`
+      let url = `${backendURL}/stories/${storyId}`;
       const res = await fetch(url);
       if (!res.ok) {
         throw res;

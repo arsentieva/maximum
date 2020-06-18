@@ -1,3 +1,5 @@
+const { backendURL } = require("./util");
+
 const logInForm = document.querySelector(".log-in-form");
 
 logInForm.addEventListener("submit", async (e) => {
@@ -7,7 +9,8 @@ logInForm.addEventListener("submit", async (e) => {
   const password = formData.get("password");
   const body = { email, password };
   try {
-    const res = await fetch("http://localhost:8085/users/token", {
+    // TIP: If developing use 'http://localhost:8085/users/token'
+    const res = await fetch(`${backendURL}/users/token`, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {

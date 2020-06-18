@@ -9,4 +9,6 @@ export function authorCardBuilder(User, datePublished) {
   `
 };
 
+export const backendURL = 'https://radiant-garden-26318.herokuapp.com';
+
 // module.exports = { authorCardBuilder };
