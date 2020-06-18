@@ -1,9 +1,9 @@
-import { authorCardBuilder } from "./util.js";
+import { authorCardBuilder, backendURL } from "./util.js";
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     let storyId = localStorage.getItem("MAXIMUM_STORY_ID");
 
-    let url = `http://localhost:8085/stories/${storyId}`;
+    let url = `${backendURL}/stories/${storyId}`;
     const res = await fetch(url);
     if (!res.ok) {
       throw res;
