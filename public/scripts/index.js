@@ -12,7 +12,7 @@ const fetchStories = async () => {
     return;
   }
   const { stories } = await res.json();
-  console.log(stories);
+  // console.log(stories);
   const storiesContainer = document.querySelector(".stories-container");
   const storiesHtml = stories.map(
     ({ title, byline, id, User, createdAt }) => `
