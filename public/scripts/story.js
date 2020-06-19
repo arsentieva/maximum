@@ -4,8 +4,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     let storyId = localStorage.getItem("MAXIMUM_STORY_ID");
 
     let url = `${backendURL}/stories/${storyId}`;
+    console.log(url);
     const res = await fetch(url);
     if (!res.ok) {
+      console.log(res);
       throw res;
     }
     const { story } = await res.json();

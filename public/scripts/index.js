@@ -1,6 +1,5 @@
 import { authorCardBuilder, backendURL } from "./util.js";
 
-console.log(authorCardBuilder);
 const fetchStories = async () => {
   let url = `${backendURL}/stories`;
   const res = await fetch(url, {
@@ -32,6 +31,7 @@ const fetchStories = async () => {
   );
   storiesContainer.innerHTML = storiesHtml.join("");
 };
+
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     await fetchStories();
