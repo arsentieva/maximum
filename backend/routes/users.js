@@ -98,8 +98,9 @@ router.put(
     }
 
     if (user) {
-      const { name, email, image, bio } = req.body;
-      await user.update({ name, email, image, bio });
+      let { name, bio } = req.body;
+
+      await user.update({ name, bio });
       res.json({
         name: user.name,
         bio: user.bio,
