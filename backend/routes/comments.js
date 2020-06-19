@@ -69,6 +69,6 @@ router.put("/:storyId/comments/:commentId", validateComment, asyncHandler(async 
         next(commentNotFoundError(commentId));
     }
 
-}))
+}));
 
 module.exports = router;

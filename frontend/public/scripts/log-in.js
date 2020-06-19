@@ -1,6 +1,4 @@
-import { backendURL } from './util.js';
-
-
+import { backendURL } from "./util.js";
 
 const logInForm = document.querySelector(".log-in-form");
 
@@ -11,7 +9,8 @@ logInForm.addEventListener("submit", async (e) => {
   const password = formData.get("password");
   const body = { email, password };
   try {
-    const res = await fetch(`${backendURL}/users/token`, {
+    let url = `${backendURL}/users/token`;
+    const res = await fetch(url, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {
@@ -29,7 +28,7 @@ logInForm.addEventListener("submit", async (e) => {
     localStorage.setItem("MAXIMUM_ACCESS_TOKEN", token);
     localStorage.setItem("MAXIMUM_CURRENT_USER_ID", id);
     // redirect to home page to see all stories:
-    window.location.href = "/";
+    window.location.href = "/stories";
   } catch (err) {
     if (err.status >= 400 && err.status < 600) {
       const errorJSON = await err.json();
