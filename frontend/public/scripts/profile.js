@@ -20,51 +20,70 @@ const fetchUser = async () => {
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     await fetchUser();
-    let newUserName = "";
-    let newUserBio = "";
-    const editButton = document.querySelector("#edit-profile");
-    const userNameElement = document.querySelector(".user-name");
-    const userBioElement = document.querySelector(".user-bio");
-
-    if (editButton) {
-      editButton.addEventListener("click", () => {
-        //TODO handle disable/hide of the edit in CSS?
-        userNameElement.contentEditable = true;
-        userNameElement.addEventListener("blur", () => {
-          newUserName = userNameElement.innerText;
-        });
-
-        userBioElement.contentEditable = true;
-        userBioElement.addEventListener("blur", () => {
-          newUserBio = userBioElement.innerText;
-        });
-      });
-    }
-    const saveButton = document.querySelector("#save-profile");
-    if (saveButton) {
-      saveButton.addEventListener("click", async () => {
-        userNameElement.contentEditable = false;
-        userBioElement.contentEditable = false;
-        if (newUserName === "") {
-          newUserName = currentName;
-        }
-        if (newUserBio === "") {
-          newUserBio = currentBio;
-        }
-
-        if (newUserBio !== "" || newUserName !== "") {
-          try {
-            await handleEdit(newUserName, newUserBio);
-          } catch (error) {
-            console.error(error);
-          }
-        }
-      });
-    }
+    editAndSaveUserProfile();
+    addNewStory();
   } catch (err) {
     console.error(err);
   }
 });
+
+function editAndSaveUserProfile() {
+  let newUserName = "";
+  let newUserBio = "";
+  const userNameElement = document.querySelector(".user-name");
+  const userBioElement = document.querySelector(".user-bio");
+
+  //EDIT USER
+  const editButton = document.querySelector("#edit-profile");
+  if (editButton) {
+    editButton.addEventListener("click", () => {
+      //TODO handle disable/hide of the edit in CSS?
+      userNameElement.contentEditable = true;
+      userBioElement.contentEditable = true;
+
+      userNameElement.addEventListener("blur", () => {
+        newUserName = userNameElement.innerText;
+      });
+
+      userBioElement.addEventListener("blur", () => {
+        newUserBio = userBioElement.innerText;
+      });
+    });
+  }
+
+  //SAVE USER
+  const saveButton = document.querySelector("#save-profile");
+  if (saveButton) {
+    saveButton.addEventListener("click", async () => {
+      userNameElement.contentEditable = false;
+      userBioElement.contentEditable = false;
+      if (newUserName === "") {
+        newUserName = currentName;
+      }
+      if (newUserBio === "") {
+        newUserBio = currentBio;
+      }
+
+      if (newUserBio !== "" || newUserName !== "") {
+        try {
+          await handleEdit(newUserName, newUserBio);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    });
+  }
+}
+
+function addNewStory() {
+  //redirect to new story page
+  const newStoryBtn = document.querySelector("#new-story");
+  if (newStoryBtn) {
+    newStoryBtn.addEventListener("click", () => {
+      window.location.href = "/new-story";
+    });
+  }
+}
 
 async function extratcUserFromRes(res) {
   const { user } = await res.json();
