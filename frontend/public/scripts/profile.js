@@ -110,7 +110,6 @@ const handleEdit = async (name, bio) => {
       console.log(res.status);
       throw res;
     }
-    //TODO update the ui with the changes
     await extratcUserFromRes(res);
   } catch (err) {
     console.error(err);
