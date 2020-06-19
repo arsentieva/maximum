@@ -1,6 +1,8 @@
 import { backendURL } from "./util.js";
 const userId = localStorage.getItem("MAXIMUM_CURRENT_USER_ID");
 const url = `${backendURL}/users/${userId}`;
+let currentName = "";
+let currentBio = "";
 
 const fetchUser = async () => {
   const res = await fetch(url, {
@@ -12,13 +14,7 @@ const fetchUser = async () => {
     window.location.href = "/log-in";
     return;
   }
-  const { user } = await res.json();
-  const { name, bio, id, createdAt } = user;
-  const biography = bio ? bio : "in the making...";
-  const userContainer = document.querySelector(".user_container");
-
-  const userHTML = profileBlock(id, name, createdAt, biography);
-  userContainer.innerHTML = userHTML;
+  await extratcUserFromRes(res);
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -27,16 +23,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     let newUserName = "";
     let newUserBio = "";
     const editButton = document.querySelector("#edit-profile");
+    const userNameElement = document.querySelector(".user-name");
+    const userBioElement = document.querySelector(".user-bio");
+
     if (editButton) {
       editButton.addEventListener("click", () => {
         //TODO handle disable/hide of the edit in CSS?
-        const userNameElement = document.querySelector(".user-name");
         userNameElement.contentEditable = true;
         userNameElement.addEventListener("blur", () => {
           newUserName = userNameElement.innerText;
         });
 
-        const userBioElement = document.querySelector(".user-bio");
         userBioElement.contentEditable = true;
         userBioElement.addEventListener("blur", () => {
           newUserBio = userBioElement.innerText;
@@ -46,13 +43,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     const saveButton = document.querySelector("#save-profile");
     if (saveButton) {
       saveButton.addEventListener("click", async () => {
-        //todo check if the name changed
+        userNameElement.contentEditable = false;
+        userBioElement.contentEditable = false;
+        if (newUserName === "") {
+          newUserName = currentName;
+        }
+        if (newUserBio === "") {
+          newUserBio = currentBio;
+        }
+
         if (newUserBio !== "" || newUserName !== "") {
           try {
-            console.log("calling handle edit");
-            debugger;
             await handleEdit(newUserName, newUserBio);
-            console.log("after handle edit");
           } catch (error) {
             console.error(error);
           }
@@ -63,6 +65,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error(err);
   }
 });
+
+async function extratcUserFromRes(res) {
+  const { user } = await res.json();
+  const { id, createdAt } = user;
+  currentName = user.name;
+  currentBio = user.bio;
+  const biography = currentBio ? currentBio : "in the making...";
+  const userContainer = document.querySelector(".user_container");
+
+  const userHTML = profileBlock(id, currentName, createdAt, biography);
+  userContainer.innerHTML = userHTML;
+}
 
 function profileBlock(id, name, createdAt, biography) {
   return ` <div class="user" id="${id}">
@@ -97,34 +111,8 @@ const handleEdit = async (name, bio) => {
       throw res;
     }
     //TODO update the ui with the changes
-    const { user } = await res.json();
-    console.log(user);
-    const { name, bio, id, createdAt } = user;
-    const biography = bio ? bio : "in the making...";
-    const userContainer = document.querySelector(".user_container");
-
-    const userHTML = profileBlock(id, name, createdAt, biography);
-    userContainer.innerHTML = userHTML;
+    await extratcUserFromRes(res);
   } catch (err) {
     console.error(err);
   }
 };
-// editButton.addEventListener("click", () => {
-//   window.location.href = `/users/${userId}/edit`;
-//   let formHTML = `<form class="user-edit-form">
-//               <div class="form-group">
-//                   <label for="name">Name</label>
-//                   <input class="form-control" id="text" type="nae" name="name" placeholder="Enter your name">
-//               </div>
-//               <div class="form-group">
-//                   <label for="email">Email address</label>
-//                   <input class="form-control" id="email" type="email" name="email" placeholder="Enter email">
-//               </div>
-//               <div class="form-group">
-//                   <label for="bio">Bio</label>
-//                   <input class="form-control" id="text" type="bio" name="bio" placeholder="Enter your bio">
-//               </div>
-//                   <button class="btn btn-primary" type="submit">Update</button>
-//             </form>`;
-//   editButton.innerHTML = formHTML;
-// });
