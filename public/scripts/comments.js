@@ -57,8 +57,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         await fetchComments(storyId);
         commentPostBtn.addEventListener("click", async (event) => {
             event.preventDefault();
-            const commentBody = document.getElementById("body").value;
-            console.log(commentBody)
+            const commentBody = document.getElementById("body").value.trim();
             await commentPost(storyId, { body: commentBody });
         });
     } catch (e) {
