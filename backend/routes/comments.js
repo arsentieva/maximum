@@ -34,12 +34,15 @@ router.post("/:id/comments", validateComment, asyncHandler(async (req, res) => {
     const storyId = req.params.id;
     const userId = req.user.id;
     const { body } = req.body; // TODO Anything Else?
+    // console.log(body);
     const comment = await Comment.create({
         body,
         userId,
         storyId,
     });
-    res.json({ comment });
+    // res.send(comment)
+    res.status(201).json({ comment });
+
 }));
 
 router.put("/:storyId/comments/:commentId", validateComment, asyncHandler(async (req, res, next) => {

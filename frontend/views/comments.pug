@@ -6,5 +6,11 @@ block content
 
     .errors-container
     div(class="comments-container")
-
+    div
+        form(action=`/stories/${id}/comments` method="POST")
+            div
+                label(for="body") What do you have to say?
+            div
+                textarea(name="body" id="body", cols="30", rows="2")
+            button.btn.btn-primary(type="submit" id="submit") Submit
     script(type="module" src="/scripts/comments.js")
