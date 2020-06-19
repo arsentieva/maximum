@@ -2,7 +2,6 @@ import { authorCardBuilder, backendURL } from "./util.js";
 
 const fetchStories = async () => {
   let url = `${backendURL}/stories`;
-
   const res = await fetch(url, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
@@ -32,6 +31,7 @@ const fetchStories = async () => {
   );
   storiesContainer.innerHTML = storiesHtml.join("");
 };
+
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     await fetchStories();
