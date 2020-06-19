@@ -1,7 +1,9 @@
 import { authorCardBuilder, backendURL } from "./util.js";
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    let storyId = localStorage.getItem("MAXIMUM_STORY_ID");
+    let pathName = window.location.pathname;
+    const storyId = pathName.substring(pathName.lastIndexOf("/") + 1);
+    localStorage.setItem("MAXIMUM_STORY_ID", storyId);
 
     let url = `${backendURL}/stories/${storyId}`;
     console.log(url);
