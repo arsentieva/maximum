@@ -5,7 +5,6 @@ block content
     h2 Comments
 
     .errors-container
-    div(class="comments-container")
     div
         form(action=`/stories/${id}/comments` method="POST")
             div
@@ -13,4 +12,5 @@ block content
             div
                 textarea(name="body" id="body", cols="30", rows="2")
             button.btn.btn-primary(type="submit" id="submit") Submit
+    div(class="comments-container")
     script(type="module" src="/scripts/comments.js")
