@@ -27,6 +27,10 @@ app.get("/stories/:id(\\d+)", (req, res) => {
   res.render("story");
 });
 
+app.get("/new-story", (req, res) => {
+  res.render("new-story");
+});
+
 app.get("/stories/:id(\\d+)/comments", (req, res) => {
   res.render("comments");
 });
