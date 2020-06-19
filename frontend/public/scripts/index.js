@@ -1,6 +1,5 @@
 import { authorCardBuilder, backendURL } from "./util.js";
 
-console.log(authorCardBuilder);
 const fetchStories = async () => {
   let url = `${backendURL}/stories`;
 
