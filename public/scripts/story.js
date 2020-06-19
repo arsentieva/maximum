@@ -10,18 +10,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     const { story } = await res.json();
     const { title, byline, id, User, createdAt, body } = story;
-    const storyContainer = document.querySelector(".story_container");
-    const storyHTML = ` <div class="story" id="${id}">
-              <div class="story-body">
-              <h1 class="story-title">${title}</h1>
-                  <div class="story-image">
-                  <img src="/images/story-images/${id}.jpg">
-              </div>
-              <div class="author-card">
-               ${authorCardBuilder(User, createdAt)}
-            </div>
-              <p class="story-byline">${byline}</p>
-              <p class="story-body">${body}</p>
+    const storyContainer = document.querySelector(".story-container");
+    const storyHTML = `
+    <div class="story" id="${id}">
+      <div class="story-page-content">
+        <h1 class="story-page-title">${title}</h1>
+        <h3 class="story-page-byline">${byline}</h3>
+        <div class ="author-container">
+          <div class="author-card">
+            ${authorCardBuilder(User, createdAt)}
+          </div>
+          <button class="follow-button" type="button">Follow</button>
+        </div>
+        <div class="story-page-image">
+          <img src="/images/story-images/${id}.jpg">
+        </div>
+        <p class="story-page-text">${body}</p>
+        <div class="claps">
+          <div class="claps-image">
+            <img src="/images/resources/clap.png">
+          </div>
+          <p>23 claps</p>
+        </div>
+
       </div>
     </div>
   `;
