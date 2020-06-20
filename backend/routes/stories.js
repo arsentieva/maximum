@@ -4,7 +4,7 @@ const { requireAuth } = require("../auth");
 const router = express.Router();
 const db = require("../db/models");
 
-const { Story, User, Follow } = db;
+const { Story, User, Follow, StoryClap } = db;
 
 const { asyncHandler, validateStory } = require("../utils");
 
@@ -50,8 +50,12 @@ router.get(
       isFollower = true;
     }
 
+    const numClaps = await StoryClap.count({
+      where: { storyId: storyId },
+    });
+
     if (story) {
-      res.json({ story, userFollowsAuthor: isFollower });
+      res.json({ story, numClaps, userFollowsAuthor: isFollower });
     } else {
       next(storyNotFoundError(storyId));
     }
