@@ -42,9 +42,6 @@ router.get(
       attributes: ["id", "title", "body", "byline", "createdAt"],
     });
 
-    // const followerCount = await Follow.count({
-    //   where: { followedId: story.User.id },
-    // });
     const followsAuthor = await Follow.findOne({
       where: { followedId: story.User.id, followerId: req.user.id },
     });
