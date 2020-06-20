@@ -8,8 +8,8 @@ const getClap = async (storyId) => {
       Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
     },
   });
-  if(res.status === 200) return true;
-  if(res.status === 204) return false;
+  if (res.status === 201) return true;
+  if (res.status === 204) return false;
   else throw new Error("Something unexpected happened...");
 }
 
@@ -19,11 +19,12 @@ const clap = async (storyId) => {
     const res = await fetch(url, {
       method: "POST",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
       },
     });
-    if(res.ok) throw res;
-    window.location.href = `/stories/${storyId}`;
+    if (!res.ok) throw res;
+    return res;
   } catch (e) {
     console.error(e);
   }
@@ -38,9 +39,9 @@ const unclap = async (storyId) => {
         Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
       },
     });
-    if(res.ok) throw res;
-    window.location.href = `/stories/${storyId}`;
-  } catch(e) {
+    if (!res.ok) throw res;
+    return res;
+  } catch (e) {
     console.error(e);
   }
 }
@@ -51,18 +52,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     const storyId = pathName.substring(pathName.lastIndexOf("/") + 1);
     localStorage.setItem("MAXIMUM_STORY_ID", storyId);
 
-    let url = `${backendURL}/stories/${storyId}`;
-    const res = await fetch(url, {
+    let storyUrl = `${backendURL}/stories/${storyId}`;
+    const res = await fetch(storyUrl, {
       method: "GET",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
       },
     });
-    console.log(url);
-    console.log(res);
-    if (!res.ok) {
-      throw res;
-    }
+
+    if (!res.ok) throw res;
+
     const { story, numClaps } = await res.json();
     const { title, byline, id, User, createdAt, body } = story;
     const storyContainer = document.querySelector(".story-container");
@@ -91,22 +91,29 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
     </div>
   `;
-
-  const clapNumber = document.querySelector(".clap-number");
-  const clapImage = document.querySelector(".claps-image");
-
-  clapImage.addEventListener("click", async () => {
-    try{
-      const clapStatus = await getClap(storyId);
-      if(clapStatus) unclap;
-      if(!clapStatus) clap;
-    } catch(e){
-      console.error(e);
-    }
-  })
-
     storyContainer.innerHTML = storyHTML;
+
+    const clapNumber = document.querySelector("#clap-number");
+    const clapImage = document.querySelector(".claps-image");
+
+    clapImage.addEventListener("click", async () => {
+      try {
+        const clapStatus = await getClap(storyId);
+        if (clapStatus) {
+          const unclapped = await unclap(storyId).then(response => response.json());;
+          clapNumber.innerHTML = unclapped.numClaps;
+        }
+        if (!clapStatus){
+          const clapped = await clap(storyId).then(response => response.json());
+          clapNumber.innerHTML = clapped.numClaps;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    });
+
   } catch (err) {
+    console.error(err)
     res.status(503).send({ message: e.message });
   }
 });
