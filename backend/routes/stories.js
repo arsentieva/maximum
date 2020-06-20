@@ -4,7 +4,7 @@ const { requireAuth } = require("../auth");
 const router = express.Router();
 const db = require("../db/models");
 
-const { Story, User } = db;
+const { Story, User, Follow } = db;
 
 const { asyncHandler, validateStory } = require("../utils");
 
@@ -37,12 +37,24 @@ router.get(
   asyncHandler(async (req, res, next) => {
     let storyId = parseInt(req.params.id, 10);
     const story = await Story.findOne({
-      include: [{ model: User, attributes: ["name"] }],
+      include: [{ model: User, attributes: ["name", "id"] }],
       where: { id: storyId },
       attributes: ["id", "title", "body", "byline", "createdAt"],
     });
+
+    // const followerCount = await Follow.count({
+    //   where: { followedId: story.User.id },
+    // });
+    const followsAuthor = await Follow.findOne({
+      where: { followedId: story.User.id, followerId: req.user.id },
+    });
+    let isFollower = false;
+    if (followsAuthor !== null) {
+      isFollower = true;
+    }
+
     if (story) {
-      res.json({ story });
+      res.json({ story, userFollowsAuthor: isFollower });
     } else {
       next(storyNotFoundError(storyId));
     }

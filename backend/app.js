@@ -6,6 +6,7 @@ const environment = require("./config/index").environment;
 const userRouter = require("./routes/users");
 const storiesRouter = require("./routes/stories");
 const commentsRouter = require("./routes/comments");
+const followsRouter = require("./routes/follows");
 
 const app = express();
 app.use(morgan("dev"));
@@ -19,6 +20,7 @@ if (process.env.NODE_ENV === "production") {
 app.use("/users", userRouter);
 app.use("/stories", storiesRouter);
 app.use("/stories", commentsRouter);
+app.use("/follows", followsRouter);
 
 // Process sequelize errors
 app.use((err, req, res, next) => {
