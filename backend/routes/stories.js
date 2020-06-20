@@ -42,7 +42,7 @@ router.get(
       attributes: ["id", "title", "body", "byline", "createdAt"],
     });
     const numClaps = await StoryClaps.count({
-      where: { storyId: storyId }
+      where: { storyId: storyId },
     });
     if (story) {
       res.json({ story, numClaps });

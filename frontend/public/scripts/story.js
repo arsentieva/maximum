@@ -52,11 +52,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     localStorage.setItem("MAXIMUM_STORY_ID", storyId);
 
     let url = `${backendURL}/stories/${storyId}`;
-    const res = await fetch(url);
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
+      },
+    });
+    console.log(url);
+    console.log(res);
     if (!res.ok) {
       throw res;
     }
-    const { story } = await res.json();
+    const { story, numClaps } = await res.json();
     const { title, byline, id, User, createdAt, body } = story;
     const storyContainer = document.querySelector(".story-container");
     const storyHTML = `
@@ -78,7 +85,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <div class="claps-image">
             <img src="/images/resources/clap.png">
           </div>
-          <p><span id="clap-number">23</span> claps</p>
+          <p><span id="clap-number">${numClaps}</span> claps</p>
         </div>
 
       </div>
