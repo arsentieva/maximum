@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 
-const { User } = require("../db/models");
+const { User, Follow } = require("../db/models");
 const { getUserToken } = require("../auth");
 
 const {
@@ -16,9 +16,17 @@ const router = express.Router();
 router.get(
   "/:id",
   asyncHandler(async (req, res) => {
-    console.log(req.params.id);
-    const user = await User.findByPk(parseInt(req.params.id, 10));
+    const userId = parseInt(req.params.id, 10);
+    const user = await User.findByPk(userId);
     const token = getUserToken(user);
+
+    const followersCount = await Follow.count({
+      where: { followedId: userId },
+    });
+    const followingCount = await Follow.count({
+      where: { followerId: userId },
+    });
+
     res.status(201).json({
       user: {
         id: user.id,
@@ -26,6 +34,10 @@ router.get(
         bio: user.bio,
         image: user.image,
         createdAt: user.createdAt,
+      },
+      follow: {
+        followersCount,
+        followingCount,
       },
       token,
     });
