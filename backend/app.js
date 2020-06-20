@@ -7,6 +7,7 @@ const userRouter = require("./routes/users");
 const storiesRouter = require("./routes/stories");
 const commentsRouter = require("./routes/comments");
 const storyClapsRouter = require("./routes/claps");
+const followsRouter = require("./routes/follows");
 
 const app = express();
 app.use(morgan("dev"));
@@ -21,6 +22,7 @@ app.use("/users", userRouter);
 app.use("/stories", storiesRouter);
 app.use("/stories", commentsRouter);
 app.use("/stories", storyClapsRouter);
+app.use("/follows", followsRouter);
 
 // Process sequelize errors
 app.use((err, req, res, next) => {

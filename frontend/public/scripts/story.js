@@ -1,8 +1,12 @@
 import { authorCardBuilder, backendURL } from "./util.js";
+let authorId = "";
+let pathName = window.location.pathname;
+const storyId = pathName.substring(pathName.lastIndexOf("/") + 1);
+localStorage.setItem("MAXIMUM_STORY_ID", storyId);
 
 const getClap = async (storyId) => {
-  let url = `${backendURL}/stories/${storyId}/story-claps`;
-  const res = await fetch(url, {
+  let clapURL = `${backendURL}/stories/${storyId}/story-claps`;
+  const res = await fetch(clapURL, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
@@ -15,8 +19,8 @@ const getClap = async (storyId) => {
 
 const clap = async (storyId) => {
   try {
-    let url = `${backendURL}/stories/${storyId}/story-claps`;
-    const res = await fetch(url, {
+    let clapURL = `${backendURL}/stories/${storyId}/story-claps`;
+    const res = await fetch(clapURL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,8 +36,8 @@ const clap = async (storyId) => {
 
 const unclap = async (storyId) => {
   try {
-    let url = `${backendURL}/stories/${storyId}/story-claps`;
-    const res = await fetch(url, {
+    let clapURL = `${backendURL}/stories/${storyId}/story-claps`;
+    const res = await fetch(clapURL, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
@@ -48,12 +52,8 @@ const unclap = async (storyId) => {
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    let pathName = window.location.pathname;
-    const storyId = pathName.substring(pathName.lastIndexOf("/") + 1);
-    localStorage.setItem("MAXIMUM_STORY_ID", storyId);
-
-    let storyUrl = `${backendURL}/stories/${storyId}`;
-    const res = await fetch(storyUrl, {
+    let url = `${backendURL}/stories/${storyId}`;
+    const res = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -63,9 +63,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!res.ok) throw res;
 
-    const { story, numClaps } = await res.json();
+    const { story, numClaps, userFollowsAuthor } = await res.json();
     const { title, byline, id, User, createdAt, body } = story;
+    authorId = User.id;
     const storyContainer = document.querySelector(".story-container");
+    let followButtonText = "Follow";
+    if (userFollowsAuthor) {
+      followButtonText = "Unfollow";
+    }
     const storyHTML = `
     <div class="story" id="${id}">
       <div class="story-page-content">
@@ -75,7 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <div class="author-card">
             ${authorCardBuilder(User, createdAt)}
           </div>
-          <button class="follow-button" type="button">Follow</button>
+          <button class="follow-button" type="button">${followButtonText}</button>
         </div>
         <div class="story-page-image">
           <img src="/images/story-images/${id}.jpg">
@@ -95,6 +100,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const clapNumber = document.querySelector("#clap-number");
     const clapImage = document.querySelector(".claps-image");
+    const followButton = document.querySelector(".follow-button");
 
     clapImage.addEventListener("click", async () => {
       try {
@@ -112,8 +118,56 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
 
+    if (followButton) {
+      followButton.addEventListener("click", async () => {
+        let followState = followButton.innerText;
+        await handleFollow(followState);
+      });
+    }
   } catch (err) {
     console.error(err)
     res.status(503).send({ message: e.message });
   }
+
+  const handleFollow = async (followState) => {
+    let method = "POST";
+    if (followState === "Unfollow") {
+      method = "DELETE";
+    }
+    let body = { followedId: authorId };
+    let url = `${backendURL}/follows`;
+    try {
+      const res = await fetch(url, {
+        method: method,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem(
+            "MAXIMUM_ACCESS_TOKEN"
+          )}`,
+        },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) {
+        console.log(res.status);
+        throw res;
+      }
+
+      await res.json();
+      toggleFollowButton();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 });
+
+function toggleFollowButton() {
+  const followButton = document.querySelector(".follow-button");
+  if (followButton) {
+    let followState = followButton.innerText;
+    if (followState === "Unfollow") {
+      followButton.innerText = "Follow";
+    } else {
+      followButton.innerText = "Unfollow";
+    }
+  }
+}
