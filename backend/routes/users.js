@@ -16,7 +16,6 @@ const router = express.Router();
 router.get(
   "/:id",
   asyncHandler(async (req, res) => {
-    console.log(req.params.id);
     const user = await User.findByPk(parseInt(req.params.id, 10));
     const token = getUserToken(user);
     res.status(201).json({

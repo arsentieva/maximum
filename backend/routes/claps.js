@@ -11,21 +11,28 @@ router.use(requireAuth);
 router.get("/:id/story-claps", asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.id, 10);
     const userId = parseInt(req.user.id, 10);
+    // search for an existing clap based on user and story id
     const clap = await StoryClap.findOne({
         where: { storyId: storyId, userId: userId }
     });
-    if(clap) res.status(200);
-    if(!clap) res.status(204);
+    // I added .json({clap}) to test for res is not defined error in story.js
+    // if the clap isn't falsey, send a 200 status indicating ok
+    if (clap) res.status(201).json({ clap });
+    // if the clap is falsey, send a 204 status indicating successful search, but no db entry
+    if (!clap) res.status(204).json({ clap });
 }));
 
 router.post("/:id/story-claps", asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.id, 10);
     const userId = parseInt(req.user.id, 10);
     const clap = await StoryClap.create({
-        storyId,
-        userId,
+        storyId: storyId,
+        userId: userId,
     });
-    res.status(201).json({ clap });
+    const numClaps = await StoryClap.count({
+        where: { storyId: storyId },
+    });
+    res.status(201).json({ numClaps });
 }));
 
 router.delete("/:id/story-claps", asyncHandler(async (req, res) => {
@@ -34,6 +41,10 @@ router.delete("/:id/story-claps", asyncHandler(async (req, res) => {
     await StoryClap.destroy({
         where: { storyId: storyId, userId: userId }
     });
+    const numClaps = await StoryClap.count({
+        where: { storyId: storyId },
+    });
+    res.status(201).json({ numClaps });
 }));
 
 module.exports = router;
