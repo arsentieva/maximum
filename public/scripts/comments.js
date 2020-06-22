@@ -6,7 +6,7 @@ const fetchComments = async (storyId) => {
             Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
         },
     });
-    if (res.status === 401) {
+    if (res.status >= 300 || res.status < 200) {
         window.location.href = "/log-in";
         return;
     }
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         commentPostBtn.addEventListener("click", async (event) => {
             event.preventDefault();
             const commentBody = document.getElementById("body").value.trim();
-            if(commentBody){
+            if (commentBody) {
                 await commentPost(storyId, { body: commentBody });
             }
         });
