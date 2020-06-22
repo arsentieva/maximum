@@ -1,4 +1,4 @@
-import { backendURL } from "./util.js";
+import { formatDateFromSequelize, backendURL } from "./util.js";
 const userId = localStorage.getItem("MAXIMUM_CURRENT_USER_ID");
 const url = `${backendURL}/users/${userId}`;
 let currentName = "";
@@ -90,7 +90,7 @@ async function extratcUserFromRes(res) {
   const { id, createdAt } = user;
   currentName = user.name;
   currentBio = user.bio;
-  const biography = currentBio ? currentBio : "in the making...";
+  const biography = currentBio ? currentBio : "No bio available";
   const userContainer = document.querySelector(".user_container");
 
   const userHTML = profileBlock(id, currentName, createdAt, biography);
@@ -103,7 +103,7 @@ function profileBlock(id, name, createdAt, biography) {
         <h1 class="user-name">${name}</h1>
         <div class="user-image">
             <img src="/images/profile-images/1.png">
-            <p "author-date">Member since :${createdAt}</p>
+            <p "author-date">Member since ${formatDateFromSequelize(createdAt)}</p>
         </div>
     </div>
     <p class="user-bio">${biography}</p>

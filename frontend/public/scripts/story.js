@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <h3 class="story-page-byline">${byline}</h3>
         <div class ="author-container">
           <div class="author-card">
-            ${authorCardBuilder(User, createdAt)}
+            ${authorCardBuilder(User, createdAt, true)}
           </div>
           <button class="follow-button" type="button">Follow</button>
         </div>
