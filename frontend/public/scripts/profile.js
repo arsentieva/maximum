@@ -1,4 +1,4 @@
-import { backendURL } from "./util.js";
+import { formatDateFromSequelize, authorCardBuilder, backendURL } from "./util.js";
 const userId = localStorage.getItem("MAXIMUM_CURRENT_USER_ID");
 const url = `${backendURL}/users/${userId}`;
 let currentName = "";
@@ -92,8 +92,8 @@ async function extratcUserFromRes(res) {
 
   currentName = user.name;
   currentBio = user.bio;
-  const biography = currentBio ? currentBio : "in the making...";
-  const userContainer = document.querySelector(".user_container");
+  const biography = currentBio ? currentBio : "No bio available";
+  const userContainer = document.querySelector(".user-container");
 
   const userHTML = profileBlock(
     id,
@@ -114,19 +114,41 @@ function profileBlock(
   followersCount,
   followingCount
 ) {
-  return ` <div class="user" id="${id}">
-    <div class="user-body">
-        <h1 class="user-name">${name}</h1>
-        <h6 class="user-followers">${followersCount} Followers</h6>
-        <h6 class="user-following">${followingCount} Following</h6>
-        <div class="user-image">
-            <img src="/images/profile-images/1.png">
-            <p "author-date">Member since :${createdAt}</p>
+  let User = { 'name': name};
+  return `
+    <div class="user" id="${id}">
+      <div class="user-body">
+        <div class="profile-head">
+          <div class="profile-head-text">
+            <h1 class="user-name">${name}</h1>
+            <div class="follow-display">
+              <h5 class="user-followers">${followersCount} Followers</h5>
+              <h5 class="user-following">${followingCount} Following</h5>
+            </div>
+            <p class="author-date">Member since ${formatDateFromSequelize(createdAt)}</p>
+          </div>
+          <div class="user-image">
+              <img src="/images/profile-images/1.png">
+          </div>
         </div>
+        <h4 class="bio-title">Bio:</h4>
+        <p class="user-bio">${biography}</p>
+        <button class="btn btn-primary" id="edit-profile" type="submit">Edit Profile</button>
+        <button class="btn btn-primary" id="save-profile" type="submit">Save</button>
+      </div>
+      <div class="user-stories-container">
+        <h3> Latest Stories </h3>
+        <div class="user-story">
+          <div class="author-card">
+          ${authorCardBuilder(User, createdAt, true)}
+          </div>
+          <h2 class="user-story-title">Why I Will Never Play "Never Have I Ever" Again</h2>
+          <p class="user-story-byline">Just when you think you know your friends, it turns out,
+            they were the ones that didn't know you</p>
+        </div>
+      </div>
     </div>
-    <p class="user-bio">${biography}</p>
-    </div>
-</div>`;
+`;
 }
 
 const handleEdit = async (name, bio) => {

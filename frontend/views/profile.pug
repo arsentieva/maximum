@@ -1,10 +1,13 @@
 extends layout.pug
 
 block content
-  h2 User Profile
-   button.btn.btn-primary#new-story(type='submit') New Story
-   div(class="user_container")
+  head
+    link(rel="stylesheet" href="../styles/profile.css")
+  div(class="profile-container")
+    h2 User Profile
+    button.btn.btn-primary#new-story(type='submit') New Story
+    div(class="user-container")
 
-   button.btn.btn-primary#edit-profile(type='submit') Edit Profile
-   button.btn.btn-primary#save-profile(type='submit') Save
-  script(type="module" src="../scripts/profile.js")
+
+      //- div(class="user_stories_container")
+    script(type="module" src="../scripts/profile.js")

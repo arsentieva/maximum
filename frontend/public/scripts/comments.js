@@ -18,7 +18,7 @@ const fetchComments = async (storyId) => {
             <div class="comment" id="${id}">
                 <div class="comment-body">
                     <div class="author-card">
-                        ${authorCardBuilder(User, createdAt)}
+                        ${authorCardBuilder(User, createdAt, true)}
                     </div>
                     <p class="comment-body">${body}</p>
                 </div>
