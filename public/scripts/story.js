@@ -86,11 +86,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           <img src="/images/story-images/${id}.jpg">
         </div>
         <p class="story-page-text">${body}</p>
-        <div class="claps">
-          <div class="claps-image">
-            <img src="/images/resources/clap.png">
+        <div class="story-footer">
+          <div class="claps">
+            <div class="claps-image">
+              <img src="/images/resources/clap.png">
+            </div>
+            <p><span id="clap-number">${numClaps}</span> claps</p>
           </div>
-          <p><span id="clap-number">${numClaps}</span> claps</p>
+          <div class="comments">
+            <a href="/stories/${storyId}/comments" class="comment-button">View Comments</a>
+          </div>
         </div>
 
       </div>

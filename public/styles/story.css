@@ -75,9 +75,9 @@ body {
 
 .claps {
   /* border-top: gainsboro solid 1px; */
-  border-bottom: gainsboro solid 1px;
-  padding: 1em 0px 1em;
-  margin: 1em 0px 1em;
+  /* border-bottom: gainsboro solid 1px; */
+  /* padding: 1em 0px 1em;
+  margin: 1em 0px 1em; */
   display: flex;
 }
 
@@ -93,4 +93,24 @@ body {
 
 .claps p{
   padding-left: 1em;
+}
+
+.story-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: gainsboro solid 1px;
+  padding: 1em 10px 1em;
+  margin: 1em 10px 1em;
+}
+
+.comment-button {
+  height: fit-content;
+  margin: 0px 0.5em 0px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: white;
+  color: #696969;
+  border: #696969 solid 1px;
+  border-radius: 5px;
 }
