@@ -22,11 +22,11 @@ formatType 2 = Month Day, Year (e.g. 'July 25, 1988') ***IF NO formatType IS SPE
 formatType 3 = array containing day, month, and year as ints (e.g. [30, 9, 1993])*/
 export function formatDateFromSequelize(oldString, formatType) {
   const year = oldString.slice(0,4);
-  const month = oldString.slice(5,7);
+  const month = oldString.slice(5,7).toString() - 1;
   const day = oldString.slice(8,10);
   const date = new Date(year, month, day);
   const monthString = date.toLocaleString('default', { month: 'long' });
-  const dayString = date.getDay().toString();
+  const dayString = date.getDate();
   const yearString = date.getFullYear().toString();
 
   if (formatType == 1) {
@@ -37,4 +37,10 @@ export function formatDateFromSequelize(oldString, formatType) {
   } else { // assumes formatType2
     return monthString + ' ' + dayString + ', ' + yearString;
   }
+}
+
+export function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
