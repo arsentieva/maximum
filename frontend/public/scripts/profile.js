@@ -86,21 +86,39 @@ function addNewStory() {
 }
 
 async function extratcUserFromRes(res) {
-  const { user } = await res.json();
+  const { user, follow } = await res.json();
   const { id, createdAt } = user;
+  const { followersCount, followingCount } = follow;
+
   currentName = user.name;
   currentBio = user.bio;
   const biography = currentBio ? currentBio : "No bio available";
   const userContainer = document.querySelector(".user_container");
 
-  const userHTML = profileBlock(id, currentName, createdAt, biography);
+  const userHTML = profileBlock(
+    id,
+    currentName,
+    createdAt,
+    biography,
+    followersCount,
+    followingCount
+  );
   userContainer.innerHTML = userHTML;
 }
 
-function profileBlock(id, name, createdAt, biography) {
+function profileBlock(
+  id,
+  name,
+  createdAt,
+  biography,
+  followersCount,
+  followingCount
+) {
   return ` <div class="user" id="${id}">
     <div class="user-body">
         <h1 class="user-name">${name}</h1>
+        <h6 class="user-followers">${followersCount} Followers</h6>
+        <h6 class="user-following">${followingCount} Following</h6>
         <div class="user-image">
             <img src="/images/profile-images/1.png">
             <p "author-date">Member since ${formatDateFromSequelize(createdAt)}</p>

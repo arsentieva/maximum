@@ -39,7 +39,8 @@ router.post("/:id/comments", validateComment, asyncHandler(async (req, res) => {
         userId,
         storyId,
     });
-    res.json({ comment });
+    res.status(201).json({ comment });
+
 }));
 
 router.put("/:storyId/comments/:commentId", validateComment, asyncHandler(async (req, res, next) => {

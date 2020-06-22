@@ -8,7 +8,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Define a route.
 app.get("/", (req, res) => {
-  res.render("index"); //TODO check if the index.pug file exists and it is setup
+  res.redirect("/stories");
+  // res.render("index"); //TODO check if the index.pug file exists and it is setup
 });
 
 app.get("/sign-up", (req, res) => {
@@ -24,7 +25,9 @@ app.get("/stories", (req, res) => {
 });
 
 app.get("/stories/:id(\\d+)", (req, res) => {
-  res.render("story");
+  res.render("story",{
+    id: req.params.id,
+  });
 });
 
 app.get("/new-story", (req, res) => {
@@ -32,7 +35,9 @@ app.get("/new-story", (req, res) => {
 });
 
 app.get("/stories/:id(\\d+)/comments", (req, res) => {
-  res.render("comments");
+  res.render("comments", {
+    id: req.params.id,
+  });
 });
 
 app.get("/profile", (req, res) => {
