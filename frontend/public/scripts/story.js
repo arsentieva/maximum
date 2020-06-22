@@ -72,8 +72,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (userFollowsAuthor) {
       followButtonText = "Unfollow";
       followClass = "follow-button-unfollow";
-
     }
+
+    const userClapsStory = async() => {
+      if(getClap(storyId) === true) {
+        console.log(getClap(storyId));
+        return `claps-image-clapped`;
+      }
+      return;
+    }
+
     const storyHTML = `
     <div class="story" id="${id}">
       <div class="story-page-content">
@@ -109,6 +117,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     const clapNumber = document.querySelector("#clap-number");
     const clapImage = document.querySelector(".claps-image");
     const followButton = document.querySelector(".follow-button");
+
+    // Determine whether to preload claps image with clapped CSS class
+    if(await getClap(storyId)){
+      clapImage.classList.add('claps-image-clapped');
+    }
+    if(await !getClap(storyId)){
+      clapImage.classList.remove('claps-image-clapped');
+    }
 
     clapImage.addEventListener("click", async () => {
       try {
