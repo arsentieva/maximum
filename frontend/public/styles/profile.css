@@ -1,25 +1,79 @@
-.profile_container {
-  padding: 20px 25% 0px;
-  display: flex;
-  justify-content: center;
+
+.profile-container {
+  padding: 0px 25% 0px;
   width: 600px;
+}
+
+.profile-head {
+  display: flex;
+  justify-content: space-between;
 }
 
 .user-name {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 2em;
   font-weight: 500;
-  margin: 20px 0px 20px;
+  margin: 20px 0px 10px;
 }
 
 button {
   height: fit-content;
-  margin: 0px 0.5em 0px;
+  margin: 0px;
   padding-left: 8px;
   padding-right: 8px;
   background-color: white;
   color: #006a4e;
   border: #006a4e solid 1px;
   border-radius: 5px;
+  font-size: 1em;
+}
+
+.user-image img {
+  width: 130px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.follow-display {
+  width: 180px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.follow-display h5 {
+  margin: 10px 0px 10px;
+}
+
+.author-date {
+  margin: 0px;
+}
+
+.bio-title {
+  margin-bottom: 5px;
+}
+
+.user-bio {
+  margin-top: 5px;
+}
+
+.user-stories-container {
+  width: 600px;
+}
+
+.user-stories-container h3 {
   font-size: 20px;
+  padding-bottom: 5px;
+}
+
+.user-story {
+  width: 580px;
+  box-shadow: 0 0px 4px 0px rgba(0,0,0,.2);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.user-story-image img {
+  max-width: 400px;
+  height: auto;
+  border-radius: 5px;
 }
