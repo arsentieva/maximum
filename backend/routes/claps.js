@@ -25,7 +25,7 @@ router.get("/:id/story-claps", asyncHandler(async (req, res) => {
 router.post("/:id/story-claps", asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.id, 10);
     const userId = parseInt(req.user.id, 10);
-    const clap = await StoryClap.create({
+    await StoryClap.create({
         storyId: storyId,
         userId: userId,
     });
