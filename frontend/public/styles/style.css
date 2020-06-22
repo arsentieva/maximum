@@ -18,6 +18,7 @@ body {
   font-size: 1;
   display: flex;
   justify-content: space-evenly;
+  box-shadow: 0 8px 8px -8px rgba(0,0,0,.4);
 }
 
 .navbar-nav a {
@@ -30,6 +31,12 @@ body {
 
 .navbar-nav a:hover {
   text-decoration: underline;
+}
+
+.navbar-brand {
+  display: flex;
+  align-self: flex-start;
+  justify-self: flex-start;
 }
 
 .stories-container {

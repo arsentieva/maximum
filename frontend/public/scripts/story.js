@@ -68,8 +68,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     authorId = User.id;
     const storyContainer = document.querySelector(".story-container");
     let followButtonText = "Follow";
+    let followClass = "";
     if (userFollowsAuthor) {
       followButtonText = "Unfollow";
+      followClass = "follow-button-unfollow";
+
     }
     const storyHTML = `
     <div class="story" id="${id}">
@@ -78,9 +81,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         <h3 class="story-page-byline">${byline}</h3>
         <div class ="author-container">
           <div class="author-card">
-            ${authorCardBuilder(User, createdAt)}
+            ${authorCardBuilder(User, createdAt, true)}
           </div>
-          <button class="follow-button" type="button">${followButtonText}</button>
+          <button class="follow-button ${followClass}" type="button">${followButtonText}</button>
         </div>
         <div class="story-page-image">
           <img src="/images/story-images/${id}.jpg">
@@ -113,10 +116,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (clapStatus) {
           const unclapped = await unclap(storyId).then(response => response.json());;
           clapNumber.innerHTML = unclapped.numClaps;
+          clapImage.classList.remove("claps-image-clapped");
         }
         if (!clapStatus){
           const clapped = await clap(storyId).then(response => response.json());
           clapNumber.innerHTML = clapped.numClaps;
+          clapImage.classList.add("claps-image-clapped");
         }
       } catch (e) {
         console.error(e);
@@ -171,8 +176,10 @@ function toggleFollowButton() {
     let followState = followButton.innerText;
     if (followState === "Unfollow") {
       followButton.innerText = "Follow";
+      followButton.classList.remove("follow-button-unfollow");
     } else {
       followButton.innerText = "Unfollow";
+      followButton.classList.add("follow-button-unfollow");
     }
   }
 }

@@ -12,6 +12,8 @@ const fetchStories = async () => {
     return;
   }
   const { stories } = await res.json();
+  const featStory= stories[2];
+
   const storiesContainer = document.querySelector(".stories-container");
   const storiesHtml = stories.map(
     ({ title, byline, id, User, createdAt }) => `
