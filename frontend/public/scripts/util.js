@@ -12,6 +12,22 @@ export function authorCardBuilder(User, datePublished, useFullYear) {
   `
 };
 
+export function featuredStoriesHtml(featStory) {
+  return `
+    <div class ="featuredStory story"  id="${featStory.id}">
+      <div class="feat-story-image">
+        <img src="/images/story-images/${featStory.id}.jpg">
+      </div>
+      <div class="feat-story-text">
+        <h2 class="feat-story-header">${featStory.title}</h2>
+        <p class="feat-story-byline">${featStory.byline}</p>
+        <div class="author-card">
+        ${authorCardBuilder(featStory.User, featStory.createdAt)}
+        </div>
+      </div>
+    </div>
+  `
+};
 export const backendURL = "https://radiant-garden-26318.herokuapp.com";
 // export const backendURL = "http://localhost:8085";
 
