@@ -61,12 +61,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     });
 
-    if (res.status >= 300 || res.status < 200) {
+    console.log(res.status)
+
+    if (res.status === 401 || res.status === 500) {
       window.location.href = "/log-in";
       return;
     }
 
-    // if (!res.ok) throw res;
+    if (!res.ok) throw res;
 
     const { story, numClaps, userFollowsAuthor } = await res.json();
     const { title, byline, id, User, createdAt, body } = story;

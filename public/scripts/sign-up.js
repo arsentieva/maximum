@@ -11,7 +11,8 @@ signUpForm.addEventListener("submit", async (event) => {
   const password = formData.get("password");
   const body = { email, password, name };
   try {
-    let url = `${backendURL}/users/token`;
+    // previously `${backendURL}/users/token`;
+    let url = `${backendURL}/users`;
     const res = await fetch(url, {
       method: "POST",
       body: JSON.stringify(body),
@@ -31,7 +32,7 @@ signUpForm.addEventListener("submit", async (event) => {
     localStorage.setItem("MAXIMUM_ACCESS_TOKEN", token);
     localStorage.setItem("MAXIMUM_CURRENT_USER_ID", id);
     // redirect to home page to see all stories:
-    window.location.href = "/";
+    window.location.href = "/stories";
   } catch (err) {
     //TODO handle errors in one common place
     console.log(err);

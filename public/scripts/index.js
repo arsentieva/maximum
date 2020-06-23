@@ -7,7 +7,7 @@ const fetchStories = async () => {
       Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
     },
   });
-  if (res.status >= 300 || res.status < 200) {
+  if (res.status === 401 || res.status === 500) {
     window.location.href = "/log-in";
     return;
   }
