@@ -1,9 +1,11 @@
 export function authorCardBuilder(User, datePublished, useFullYear) {
   let dateType = 1;
+  let img = '1.png';
   if (useFullYear) dateType = 2;
+  if (User.id < 7) img = User.id.toString() + '.jpg';
   return `
     <div class="author-image">
-      <img src="/images/profile-images/1.png">
+      <img src="/images/profile-images/${img}">
     </div>
     <div class="author-text">
       <p class="author-name">${User.name}</p>
@@ -59,4 +61,9 @@ export function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export function giveImage(id) {
+  if (id >= 0 && id <= 12) return id;
+  return getRandomInt(1, 11);
 }

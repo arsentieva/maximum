@@ -7,9 +7,10 @@ html
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       p ☼
       .navbar-nav.grid
-        a.navbar-brand(href='/') Maximum
-        a.nav-item.nav-link(href='/stories') My Stories
-        a.nav-item.nav-link#profile(href='/profile') Profile
-        a.nav-item.nav-link#logout(href='/') Logout
-    script(type="module" src="../scripts/log-out.js")
+        a.navbar-brand(href='/')
+          img(src="../images/resources/logo.png" alt="Maximum")
+        a.nav-item.nav-link(href='/stories')
+          img(src="../images/resources/stories.png" alt="Stories")
+        a.nav-item.nav-link#profile(href='/profile')
+          img(src="../images/resources/profile.png" alt="Profile")
     block content

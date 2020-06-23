@@ -1,6 +1,6 @@
 import { authorCardBuilder, backendURL } from './util.js';
 const fetchComments = async (storyId) => {
-    let url = `${backendURL}/stories/${storyId}/comments`;
+    const url = `${backendURL}/stories/${storyId}/comments`;
     const res = await fetch(url, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
