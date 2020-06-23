@@ -47,7 +47,7 @@ body {
   margin-right: 15%;
 }
 
-.stories-container .story {
+.stories-container .story-tile {
   max-width: 300px;
   background-color: white;
   justify-content: center;
@@ -55,6 +55,7 @@ body {
   margin: 20px 10px 20px;
   padding-bottom: 18px;
 }
+
 
 
 .stories-container .story-title {
@@ -107,4 +108,19 @@ body {
 .author-card p {
   display: flex;
   margin: auto;
+}
+
+.featuredStory {
+  display: flex;
+  max-width: 100%;
+  margin: 0 10px 0;
+}
+
+.feat-story-image {
+  max-width: 60%;
+}
+
+.feat-story-image img {
+  max-width: 100%;
+  height: auto;
 }
