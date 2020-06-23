@@ -1,14 +1,25 @@
-extends layout.pug
-
-block content
-  div(class="sign-up-container")
-    div(class="errors-container")
-    h2 Sign Up
-    form(class="sign-up-form")
-      .form-group
-        label(for='name') Name
-        input#username.form-control(type='text' name='name' placeholder="Name")
-      include includes/auth-form-fields
-      button.btn.btn-primary(type='submit') Sign Up
-    a(href='/log-in') Already have an account? Log in here.
-  script(type="module" src="../scripts/sign-up.js")
+doctype html
+html
+  head
+    title Maximum
+    link(rel='stylesheet' type='text/css' href='/styles/style.css')
+    link(rel="stylesheet" href="../styles/log-in.css")
+  body
+    div(class="background-image")
+      img#background(src="../images/resources/log-in-background.jpg")
+      div(class="splash-container")
+        img#splash(src="../images/resources/splash-logo.png")
+      div(class="log-in-container")
+        div(class="log-in-content")
+          div(class="errors-container")
+          h2 Sign Up
+          form(class="sign-up-form")
+            div(class="forms")
+              .form-group
+                label(for='name') Name
+                input#username.form-control(type='text' name='name' placeholder="Name")
+              include includes/auth-form-fields
+            div(class="buttons")
+              button.btn.btn-primary(type='submit') Sign Up
+            a(href='/log-in') Already have an account? Log in here.
+    script(type="module" src="../scripts/sign-up.js")

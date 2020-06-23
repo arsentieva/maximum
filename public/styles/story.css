@@ -129,12 +129,8 @@ body {
   font-size: 20px;
 }
 
-/* height: fit-content;
-margin: 0px 0.5em 0px;
-padding-left: 8px;
-padding-right: 8px;
-background-color: white;
-color: #006a4e;
-border: #006a4e solid 1px;
-border-radius: 5px;
-font-size: 20px; */
+.story-page-text {
+  line-height: 32px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
