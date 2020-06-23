@@ -1,0 +1,9 @@
+/* body {
+  background-image:  frontend\public\images\resources\log-in-background.jpg;
+} */
+
+.log-in-container {
+  width: 400px;
+  height: fit-content;
+  padding: 20px;
+}
