@@ -19,7 +19,7 @@ module.exports = {
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(2020, 6, 20),
         updatedAt: new Date(),
-        userId: 1
+        userId: 3
       },
       {
         title: 'Things Average People Love To Do',
@@ -37,7 +37,7 @@ module.exports = {
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(2020, 5, 12),
         updatedAt: new Date(),
-        userId: 2
+        userId: 4
       },
       {
         title: 'Asking for Help Isn\'t a Sign of Weakness',
@@ -46,7 +46,7 @@ module.exports = {
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(2020, 6, 4),
         updatedAt: new Date(),
-        userId: 2
+        userId: 5
       },
       {
         title: 'What I Learned From \'Running Up That Hill\': Philosophy & Kate Bush',
@@ -55,7 +55,7 @@ module.exports = {
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(2020, 6, 21),
         updatedAt: new Date(),
-        userId: 2
+        userId: 6
       },
       {
         title: 'Practice Doesn\'t Always Make Perfect',
@@ -64,7 +64,7 @@ module.exports = {
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(2020, 6, 18),
         updatedAt: new Date(),
-        userId: 2
+        userId: 1
       },
       {
         title: 'Confessions of a So-Called \'Ambivert\'',
@@ -78,20 +78,20 @@ module.exports = {
       {
         title: 'Is Your Disaster Plan as Foolproof as Possible?',
         byline: 'I\'d be willing to bet money it\'s not',
-        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus mattis rhoncus urna neque viverra justo. Arcu cursus euismod quis viverra nibh cras pulvinar mattis. Tellus elementum sagittis vitae et. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Nibh tortor id aliquet lectus. Scelerisque mauris pellentesque pulvinar pellentesque. Nisi scelerisque eu ultrices vitae auctor eu augue. Netus et malesuada fames ac turpis egestas. Eleifend quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus. Tristique sollicitudin nibh sit amet commodo nulla. Enim diam vulputate ut pharetra sit amet. Habitant morbi tristique senectus et netus.',
+        body: 'Lorem ipsum dolor sit amet, consectetur blaze adipiscing elit, eet sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus mattis rhoncus urna neque viverra justo. Arcu cursus euismod quis viverra nibh cras pulvinar mattis. Tellus elementum sagittis vitae et. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Nibh tortor id aliquet lectus. Scelerisque mauris pellentesque pulvinar pellentesque. Nisi scelerisque eu ultrices vitae auctor eu augue. Netus et malesuada fames ac turpis egestas. Eleifend quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus. Tristique sollicitudin nibh sit amet commodo nulla. Enim diam vulputate ut pharetra sit amet. Habitant morbi tristique senectus et netus.',
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(2020, 4, 20),
         updatedAt: new Date(),
-        userId: 1
+        userId: 3
       },
       {
         title: 'What Quarantine Revealed About Internet Addiction',
         byline: 'Please help! There\'s a pair of legs stuck in my computer!',
-        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus mattis rhoncus urna neque viverra justo. Arcu cursus euismod quis viverra nibh cras pulvinar mattis. Tellus elementum sagittis vitae et. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Nibh tortor id aliquet lectus. Scelerisque mauris pellentesque pulvinar pellentesque. Nisi scelerisque eu ultrices vitae auctor eu augue. Netus et malesuada fames ac turpis egestas. Eleifend quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus. Tristique sollicitudin nibh sit amet commodo nulla. Enim diam vulputate ut pharetra sit amet. Habitant morbi tristique senectus et netus.',
+        body: 'Lorem ipsum dolor sit amet, niiice consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus mattis rhoncus urna neque viverra justo. Arcu cursus euismod quis viverra nibh cras pulvinar mattis. Tellus elementum sagittis vitae et. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Nibh tortor id aliquet lectus. Scelerisque mauris pellentesque pulvinar pellentesque. Nisi scelerisque eu ultrices vitae auctor eu augue. Netus et malesuada fames ac turpis egestas. Eleifend quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus. Tristique sollicitudin nibh sit amet commodo nulla. Enim diam vulputate ut pharetra sit amet. Habitant morbi tristique senectus et netus.',
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(2020, 6, 9),
         updatedAt: new Date(),
-        userId: 1
+        userId: 4
       },
       {
         title: 'How To Keep Your Travel Blog Alive in The Age of Social Distancing',
@@ -100,7 +100,7 @@ module.exports = {
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(2020, 4, 12),
         updatedAt: new Date(),
-        userId: 1
+        userId: 5
       },
       {
         title: 'It\'s Worse Than it Looks: Observations from COVID-19\'s Front Lines',
@@ -109,7 +109,7 @@ module.exports = {
         image: 'https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/888/cached.offlinehbpl.hbpl.co.uk/news/ORP/ginpic-20180223123437455.jpg',
         createdAt: new Date(2020, 5, 15),
         updatedAt: new Date(),
-        userId: 1
+        userId: 6
       },
     ], {});
   },

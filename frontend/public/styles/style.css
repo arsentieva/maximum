@@ -21,6 +21,12 @@ body {
   box-shadow: 0 8px 8px -8px rgba(0,0,0,.4);
 }
 
+.navbar-nav img {
+  height: 30px;
+  width: auto;
+
+}
+
 .navbar-nav a {
   font-family: Arial, Helvetica, sans-serif;
   font-stretch: condensed;
@@ -123,4 +129,8 @@ body {
 .feat-story-image img {
   max-width: 100%;
   height: auto;
+}
+
+.feat-story-text {
+  padding-left: 15px;
 }
