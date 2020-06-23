@@ -1,14 +1,24 @@
-extends layout.pug
-
-block content
+doctype html
+html
   head
+    title Maximum
+    link(rel='stylesheet' type='text/css' href='/styles/style.css')
     link(rel="stylesheet" href="../styles/log-in.css")
-  div(class="log-in-container")
-    div(class="errors-container")
-    h2 Log In
-    form(class="log-in-form")
-      include includes/auth-form-fields
-      button.btn.btn-primary(type='submit') Log In
-      button.btn.btn-alternate(id='demo') Demo User
-  a(href='/sign-up') Don't have an account? Sign up here.
-  script(src="../scripts/log-in.js" type="module")
+  body
+    div(class="background-image")
+      img#background(src="../images/resources/log-in-background.jpg")
+      div(class="splash-container")
+        img#splash(src="../images/resources/splash-logo.png")
+      div(class="log-in-container")
+        div(class="log-in-content")
+          div(class="errors-container")
+          h2 Log In
+          form(class="log-in-form")
+            div(class="forms")
+              include includes/auth-form-fields
+            div(class="buttons")
+              button.btn.btn-primary(type='submit') Log In
+              button.btn.btn-alternate(id='demo') Demo User
+            a(href='/sign-up') Don't have an account? Sign up here.
+    script(src="../scripts/log-in.js" type="module")
+
