@@ -6,10 +6,10 @@ const fetchComments = async (storyId) => {
             Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
         },
     });
-    if (res.status === 401) {
+    if (res.status === 401 || res.status === 500) {
         window.location.href = "/log-in";
         return;
-    }
+      }
     const { comments } = await res.json();
 
     const commentsContainer = document.querySelector(".comments-container");
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         commentPostBtn.addEventListener("click", async (event) => {
             event.preventDefault();
             const commentBody = document.getElementById("body").value.trim();
-            if(commentBody){
+            if (commentBody) {
                 await commentPost(storyId, { body: commentBody });
             }
         });

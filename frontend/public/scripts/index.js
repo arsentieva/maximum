@@ -7,12 +7,12 @@ const fetchStories = async () => {
       Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
     },
   });
-  if (res.status === 401) {
+  if (res.status === 401 || res.status === 500) {
     window.location.href = "/log-in";
     return;
   }
   const { stories } = await res.json();
-  const featStory= stories[2];
+  // const featStory= stories[2];
 
   const storiesContainer = document.querySelector(".stories-container");
   const storiesHtml = stories.map(

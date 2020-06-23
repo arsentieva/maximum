@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Define a route.
 app.get("/", (req, res) => {
-  res.redirect("/stories");
+  res.render("log-in");
   // res.render("index"); //TODO check if the index.pug file exists and it is setup
 });
 

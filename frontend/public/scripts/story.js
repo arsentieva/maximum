@@ -61,6 +61,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     });
 
+    console.log(res.status)
+
+    if (res.status === 401 || res.status === 500) {
+      window.location.href = "/log-in";
+      return;
+    }
+
     if (!res.ok) throw res;
 
     const { story, numClaps, userFollowsAuthor } = await res.json();
@@ -72,14 +79,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (userFollowsAuthor) {
       followButtonText = "Unfollow";
       followClass = "follow-button-unfollow";
-    }
-
-    const userClapsStory = async() => {
-      if(getClap(storyId) === true) {
-        console.log(getClap(storyId));
-        return `claps-image-clapped`;
-      }
-      return;
     }
 
     const storyHTML = `
