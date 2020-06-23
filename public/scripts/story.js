@@ -61,6 +61,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     });
 
+    console.log(res.status)
+
+    if (res.status === 401 || res.status === 500) {
+      window.location.href = "/log-in";
+      return;
+    }
+
     if (!res.ok) throw res;
 
     const { story, numClaps, userFollowsAuthor } = await res.json();
@@ -72,8 +79,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (userFollowsAuthor) {
       followButtonText = "Unfollow";
       followClass = "follow-button-unfollow";
-
     }
+
     const storyHTML = `
     <div class="story" id="${id}">
       <div class="story-page-content">
@@ -109,6 +116,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     const clapNumber = document.querySelector("#clap-number");
     const clapImage = document.querySelector(".claps-image");
     const followButton = document.querySelector(".follow-button");
+
+    // Determine whether to preload claps image with clapped CSS class
+    if(await getClap(storyId)){
+      clapImage.classList.add('claps-image-clapped');
+    }
+    if(await !getClap(storyId)){
+      clapImage.classList.remove('claps-image-clapped');
+    }
 
     clapImage.addEventListener("click", async () => {
       try {
