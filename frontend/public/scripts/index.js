@@ -1,4 +1,4 @@
-import { authorCardBuilder, backendURL } from "./util.js";
+import { authorCardBuilder, backendURL, getRandomInt, featuredStoriesHtml } from "./util.js";
 
 const fetchStories = async () => {
   let url = `${backendURL}/stories`;
@@ -7,15 +7,17 @@ const fetchStories = async () => {
       Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
     },
   });
-  if (res.status === 401) {
+  if (res.status === 401 || res.status === 500) {
     window.location.href = "/log-in";
     return;
   }
   const { stories } = await res.json();
+
   const storiesContainer = document.querySelector(".stories-container");
+
   const storiesHtml = stories.map(
     ({ title, byline, id, User, createdAt }) => `
-        <div class="story" id="${id}">
+        <div class="story story-tile" id="${id}">
           <div class="story-body">
             <div class="story-image">
               <img src="/images/story-images/${id}.jpg">
@@ -29,7 +31,9 @@ const fetchStories = async () => {
         </div>
       `
   );
-  storiesContainer.innerHTML = storiesHtml.join("");
+  const featStory= stories[1];
+  const randomStory = stories[getRandomInt(2, 12)];
+  storiesContainer.innerHTML = featuredStoriesHtml(featStory) + featuredStoriesHtml(randomStory) + storiesHtml.join("");
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
