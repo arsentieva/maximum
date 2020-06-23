@@ -1,4 +1,5 @@
-import { authorCardBuilder, backendURL, getRandomInt, featuredStoriesHtml } from "./util.js";
+import { authorCardBuilder, backendURL,
+  getRandomInt, featuredStoriesHtml, giveImage } from "./util.js";
 
 const fetchStories = async () => {
   let url = `${backendURL}/stories`;
@@ -20,7 +21,7 @@ const fetchStories = async () => {
         <div class="story story-tile" id="${id}">
           <div class="story-body">
             <div class="story-image">
-              <img src="/images/story-images/${id}.jpg">
+              <img src="/images/story-images/${giveImage(id)}.jpg">
             </div>
             <h3 class="story-title">${title}</h3>
             <p class="story-byline">${byline}</p>

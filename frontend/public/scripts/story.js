@@ -1,4 +1,4 @@
-import { authorCardBuilder, backendURL } from "./util.js";
+import { authorCardBuilder, backendURL, giveImage } from "./util.js";
 let authorId = "";
 let pathName = window.location.pathname;
 const storyId = pathName.substring(pathName.lastIndexOf("/") + 1);
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <button class="follow-button ${followClass}" type="button">${followButtonText}</button>
         </div>
         <div class="story-page-image">
-          <img src="/images/story-images/${id}.jpg">
+          <img src="/images/story-images/${giveImage(id)}.jpg">
         </div>
         <p class="story-page-text">${body}</p>
         <div class="story-footer">
@@ -107,7 +107,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             <a href="/stories/${storyId}/comments" class="comment-button">View Comments</a>
           </div>
         </div>
-
       </div>
     </div>
   `;

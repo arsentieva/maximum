@@ -14,12 +14,9 @@ function newStoryBlock() {
   const newStoryContainer = document.querySelector(".new-story_container");
   const storyHTML = ` <div class="new_story" id="new_story">
     <div class="new_story-body-container">
-    <h3 class="new_story-title" contentEditable=true>Title</h3>
-    <h4 class="new_story-byline" contentEditable=true>byline</h4>
+    <h3 class="new_story-title" contentEditable=true>Title (70 characters max)</h3>
+    <h4 class="new_story-byline" contentEditable=true>Byline (140 characters max)</h4>
     <p class="new_story-body" contentEditable=true>Tell your story...</p>
-    <div class="-image">
-    <img src="/images/story-images/1.png">
-    </div>
     </div>
     </div>`;
 

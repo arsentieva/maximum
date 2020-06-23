@@ -136,19 +136,22 @@ function profileBlock(
         <button class="btn btn-primary" id="edit-profile" type="submit">Edit Profile</button>
         <button class="btn btn-primary" id="save-profile" type="submit">Save</button>
       </div>
-      <div class="user-stories-container">
-        <h3> Latest Stories </h3>
-        <div class="user-story">
-          <div class="author-card">
-          ${authorCardBuilder(User, createdAt, true)}
-          </div>
-          <h2 class="user-story-title">Why I Will Never Play "Never Have I Ever" Again</h2>
-          <p class="user-story-byline">Just when you think you know your friends, it turns out,
-            they were the ones that didn't know you</p>
-        </div>
-      </div>
     </div>
 `;
+
+/* Abandoned User Stories Constructor
+  <div class="user-stories-container">
+    <h3> Latest Stories </h3>
+    <div class="user-story">
+      <div class="author-card">
+      ${authorCardBuilder(User, createdAt, true)}
+      </div>
+      <h2 class="user-story-title">Why I Will Never Play "Never Have I Ever" Again</h2>
+      <p class="user-story-byline">Just when you think you know your friends, it turns out,
+        they were the ones that didn't know you</p>
+    </div>
+  </div>
+*/
 }
 
 const handleEdit = async (name, bio) => {

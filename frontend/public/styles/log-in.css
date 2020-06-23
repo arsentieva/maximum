@@ -1,9 +1,58 @@
-/* body {
-  background-image:  frontend\public\images\resources\log-in-background.jpg;
+#background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.background-image {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#splash {
+  position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  max-width: 70%;
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+
+.log-in-content {
+  display: flex;
+  /* justify-content: center; */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  background-color: rgba(255,255,255,.6);
+  border-radius: 5px;
+  flex-direction: column;
+  margin: auto;
+  padding: 10px 20px;
+}
+
+/* .forms {
+  display: flex;
+  flex-direction: column;
 } */
 
-.log-in-container {
-  width: 400px;
-  height: fit-content;
-  padding: 20px;
+.log-in-content a {
+  text-decoration: none;
+}
+
+.log-in-content input {
+
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: 500;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 10px;
 }
