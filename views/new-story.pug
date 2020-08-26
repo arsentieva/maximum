@@ -3,7 +3,18 @@ extends layout.pug
 block content
   head
     link(rel="stylesheet" href="../styles/new-story.css")
-  div(class="new-story_container")
-  button.btn.btn-primary#publish(type='submit') Publish
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    div(class="new-story_container")
+      form(class="new_story" id="new_story")
+        div(class="form-group")
+          label(for="inputTitle") Title
+          input(type="text" class="form-control" id="new_story-title" placeholder="Title (70 characters max)")
+        div(class="form-group")
+          label(for="inputByline") Byline
+          input(type="text" class="form-control" id="new_story-byline" placeholder="Byline (140 characters max")
+        div(class="form-group")
+          label(for="inputBody") Body
+          textarea(class="form-control" id="new_story-body" placeholder="Tell Your Story...", cols="30", rows="10")
+          button.btn.btn-primary#publish(type='submit') Publish
 
   script(type="module" src="../scripts/new-story.js")

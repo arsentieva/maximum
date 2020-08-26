@@ -6,12 +6,15 @@ body {
   margin: 0;
 }
 
+nav {
+  background-color: #2e856e;
+}
+
 .navbar-nav {
   position: fixed;
   background-color: #2e856e;
   color: antiquewhite;
   width: 100%;
-  height: 30px;
   margin: 0 auto;
   padding: 4px 2em;
   top: 0;

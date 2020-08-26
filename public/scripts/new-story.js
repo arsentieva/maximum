@@ -11,36 +11,39 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function newStoryBlock() {
-  const newStoryContainer = document.querySelector(".new-story_container");
-  const storyHTML = ` <div class="new_story" id="new_story">
-    <div class="new_story-body-container">
-    <h3 class="new_story-title" contentEditable=true>Title (70 characters max)</h3>
-    <h4 class="new_story-byline" contentEditable=true>Byline (140 characters max)</h4>
-    <p class="new_story-body" contentEditable=true>Tell your story...</p>
-    </div>
-    </div>`;
+  // const newStoryContainer = document.querySelector(".new-story_container");
+  // const storyHTML = ` <div class="new_story" id="new_story">
+  //   <div class="new_story-body-container">
+  //   <h3 class="new_story-title" contentEditable=true>Title (70 characters max)</h3>
+  //   <h4 class="new_story-byline" contentEditable=true>Byline (140 characters max)</h4>
+  //   <p class="new_story-body" contentEditable=true>Tell your story...</p>
+  //   </div>
+  //   </div>`;
 
-  newStoryContainer.innerHTML = storyHTML;
+  // newStoryContainer.innerHTML = storyHTML;
 }
 
 async function addNewStory() {
-  const titleElement = document.querySelector(".new_story-title");
-  const bylineElement = document.querySelector(".new_story-byline");
-  const bodyElement = document.querySelector(".new_story-body");
+  const titleElement = document.querySelector("#new_story-title");
+  const bylineElement = document.querySelector("#new_story-byline");
+  const bodyElement = document.querySelector("#new_story-body");
 
   let storyTitle = "";
   let storyByline = "";
   let storyBody = "";
 
   titleElement.addEventListener("blur", () => {
-    storyTitle = titleElement.innerText;
+    storyTitle = titleElement.value;
+    console.log(storyTitle)
   });
   bylineElement.addEventListener("blur", () => {
-    storyByline = bylineElement.innerText;
+    storyByline = bylineElement.value;
+    console.log(storyByline)
   });
 
   bodyElement.addEventListener("blur", () => {
-    storyBody = bodyElement.innerText;
+    storyBody = bodyElement.value;
+    console.log(storyBody)
   });
 
   const publishButton = document.querySelector("#publish");
