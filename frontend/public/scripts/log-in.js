@@ -6,7 +6,7 @@ const demoUser = document.getElementById('demo');
 demoUser.addEventListener("click", (e)=>{
   document.getElementById("email").value="demo@isdemo.com";
   document.getElementById("password").value="password";
-  document.getElementById("log-in-form").click();
+  document.getElementsByClassName("log-in-form")[0].click();
 });
 
 logInForm.addEventListener("submit", async (e) => {
@@ -16,7 +16,6 @@ logInForm.addEventListener("submit", async (e) => {
   const password = formData.get("password");
   const body = { email, password };
   try {
-    // previously `${backendURL}/users/token`;
     let url = `${backendURL}/users/token`;
     const res = await fetch(url, {
       method: "POST",
