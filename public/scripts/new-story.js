@@ -3,25 +3,12 @@ const url = `${backendURL}/stories`;
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    newStoryBlock();
+    // newStoryBlock();
     addNewStory();
   } catch (err) {
     console.error(err);
   }
 });
-
-function newStoryBlock() {
-  // const newStoryContainer = document.querySelector(".new-story_container");
-  // const storyHTML = ` <div class="new_story" id="new_story">
-  //   <div class="new_story-body-container">
-  //   <h3 class="new_story-title" contentEditable=true>Title (70 characters max)</h3>
-  //   <h4 class="new_story-byline" contentEditable=true>Byline (140 characters max)</h4>
-  //   <p class="new_story-body" contentEditable=true>Tell your story...</p>
-  //   </div>
-  //   </div>`;
-
-  // newStoryContainer.innerHTML = storyHTML;
-}
 
 async function addNewStory() {
   const titleElement = document.querySelector("#new_story-title");
@@ -48,7 +35,8 @@ async function addNewStory() {
 
   const publishButton = document.querySelector("#publish");
   if (publishButton) {
-    publishButton.addEventListener("click", async () => {
+    publishButton.addEventListener("click", async (event) => {
+      event.preventDefault();
       await fetchNewStory({
         title: storyTitle,
         byline: storyByline,
@@ -59,7 +47,10 @@ async function addNewStory() {
 }
 
 const fetchNewStory = async (body) => {
+  // console.log("Line 48")
   try {
+    console.log("Try")
+    console.log(localStorage.getItem("MAXIMUM_ACCESS_TOKEN"))
     const res = await fetch(url, {
       method: "POST",
       headers: {
@@ -68,16 +59,19 @@ const fetchNewStory = async (body) => {
       },
       body: JSON.stringify(body),
     });
+    console.log("After fetch")
     if (res.status === 401) {
       window.location.href = "/log-in";
       return;
     }
-    await res.json();
+    let data = await res.json();
+    // window.localStorage.setItem("DATA", JSON.stringify(data))
+    // console.log("**********************", data)
     if (!res.ok) {
       console.log(res.status);
       throw res;
     } else {
-      window.location.href = "/stories";
+      window.location.href = `/stories/${data.story.id}`;
     }
   } catch (err) {
     console.error(err);
