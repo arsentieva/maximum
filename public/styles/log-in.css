@@ -18,7 +18,7 @@
   display: flex;
   justify-content: center;
   max-width: 70%;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-bottom: 5%;
 }
 
@@ -48,6 +48,20 @@
 
 .log-in-content input {
 
+}
+
+a {
+  color: #1d8065;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .forms {
@@ -108,5 +122,5 @@ h2 {
   font-size: 2em;
   font-weight: 500;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  margin: 10px 50px;
+  margin: 10px 25px;
 }
