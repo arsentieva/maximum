@@ -30,8 +30,8 @@ export function featuredStoriesHtml(featStory) {
     </div>
   `
 };
-// export const backendURL = "https://radiant-garden-26318.herokuapp.com";
-export const backendURL = "http://localhost:8080";
+export const backendURL = "https://radiant-garden-26318.herokuapp.com";
+// export const backendURL = "http://localhost:8080";
 
 /* Use the following function to format your date from the string returned from sequelize.
 Returns either a string or an array depending on specified formatType(integer)

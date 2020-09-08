@@ -13,7 +13,7 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 if (process.env.NODE_ENV === "production") {
-  app.use(cors({ origin: "https://polar-springs-21679.herokuapp.com" }));
+  app.use(cors({ origin: "https://maximum-front-end.herokuapp.com" }));
 } else {
   app.use(cors({ origin: "http://localhost:4001" }));
 }
