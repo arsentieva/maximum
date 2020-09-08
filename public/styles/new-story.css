@@ -1,7 +1,5 @@
 .new-story_container {
-  max-width: 1200px;
   display: flex;
-  position: fixed;
   justify-content: center;
   margin: 30px;
 }
@@ -19,22 +17,36 @@ button {
   margin-left: 30px;
 }
 
+button.btn.btn-primary {
+  margin: 10px 0px;
+  width: 100%
+}
+
+form {
+  width: 800px;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
 .new_story-body {
-  max-width: 600px;
+  min-width: 600px;
   border: #696969 solid 1px;
   border-radius: 5px;
   padding: 10px 10px 10px;
 }
 
 .new_story-title {
-  max-width: 600px;
+  min-width: 600px;
   border: #696969 solid 1px;
   border-radius: 5px;
   padding: 10px 10px 10px;
 }
 
 .new_story-byline {
-  max-width: 600px;
+  min-width: 600px;
   border: #696969 solid 1px;
   border-radius: 5px;
   padding: 10px 10px 10px;
