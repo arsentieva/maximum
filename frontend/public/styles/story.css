@@ -38,6 +38,7 @@ body {
 }
 
 .author-card {
+
 }
 
 .story-page-byline {
@@ -134,3 +135,10 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 20px;
 }
+
+.new-story_container {
+  display: grid;
+  justify-self: center;
+}
+
+
