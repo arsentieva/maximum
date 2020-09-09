@@ -39,7 +39,9 @@ function editAndSaveUserProfile() {
     editButton.addEventListener("click", () => {
       //TODO handle disable/hide of the edit in CSS?
       userNameElement.contentEditable = true;
+      userNameElement.classList.add("highlight")
       userBioElement.contentEditable = true;
+      userBioElement.classList.add("highlight")
 
       userNameElement.addEventListener("blur", () => {
         newUserName = userNameElement.innerText;
@@ -56,7 +58,9 @@ function editAndSaveUserProfile() {
   if (saveButton) {
     saveButton.addEventListener("click", async () => {
       userNameElement.contentEditable = false;
+      userNameElement.classList.remove("highlight");
       userBioElement.contentEditable = false;
+      userBioElement.classList.remove("highlight");
       if (newUserName === "") {
         newUserName = currentName;
       }
@@ -85,6 +89,7 @@ function addNewStory() {
   }
 }
 
+// Needs work
 async function extratcUserFromRes(res) {
   const { user, follow } = await res.json();
   const { id, createdAt } = user;
@@ -157,8 +162,10 @@ function profileBlock(
 const handleEdit = async (name, bio) => {
   const newName = name ? name : "";
   const newBio = bio ? bio : "";
-  let body = { name: newName, bio: newBio };
-
+  const id = window.localStorage.getItem("MAXIMUM_CURRENT_USER_ID");
+  console.log(id)
+  let body = { id, name: newName, bio: newBio };
+  console.log(body);
   try {
     const res = await fetch(url, {
       method: "PUT",
@@ -168,6 +175,7 @@ const handleEdit = async (name, bio) => {
       },
       body: JSON.stringify(body),
     });
+    console.log("handle edit res json", await res.json())
     if (!res.ok) {
       console.log(res.status);
       throw res;
