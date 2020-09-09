@@ -111,7 +111,8 @@ nav {
 }
 
 .author-card .author-name {
-  color: #1C9963
+  color: #1C9963;
+  display: contents;
 }
 
 .author-card p {
