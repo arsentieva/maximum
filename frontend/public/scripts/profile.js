@@ -88,8 +88,8 @@ function addNewStory() {
 async function extratcUserFromRes(res) {
   const { user, follow } = await res.json();
   const { id, createdAt } = user;
+  console.log(user)
   const { followersCount, followingCount } = follow;
-
   currentName = user.name;
   currentBio = user.bio;
   const biography = currentBio ? currentBio : "No bio available";
@@ -128,7 +128,7 @@ function profileBlock(
             <p class="author-date">Member since ${formatDateFromSequelize(createdAt)}</p>
           </div>
           <div class="user-image">
-              <img src="/images/profile-images/1.png">
+              <img src="/images/profile-images/${id}.jpg">
           </div>
         </div>
         <h4 class="bio-title">Bio:</h4>
