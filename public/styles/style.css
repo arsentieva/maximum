@@ -81,7 +81,6 @@ nav {
 
 .stories-container .story-image {
   align-self: start;
-
 }
 
 .stories-container .story-image img {
@@ -137,4 +136,8 @@ nav {
 
 .feat-story-text {
   padding-left: 15px;
+}
+
+.highlight {
+  border: 1px solid blue;
 }

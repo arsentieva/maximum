@@ -15,7 +15,6 @@ const fetchStories = async () => {
   const { stories } = await res.json();
 
   const storiesContainer = document.querySelector(".stories-container");
-  console.log(stories);
   const storiesHtml = stories.map(
     ({ title, byline, id, User, createdAt }) => `
         <div class="story story-tile" id="${id}">
