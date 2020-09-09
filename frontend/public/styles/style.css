@@ -63,9 +63,8 @@ nav {
   align-items: center;
   margin: 20px 10px 20px;
   padding-bottom: 18px;
+  cursor: pointer;
 }
-
-
 
 .stories-container .story-title {
   justify-content: center;
@@ -124,6 +123,7 @@ nav {
   display: flex;
   max-width: 100%;
   margin: 0 10px 0;
+  cursor: pointer;
 }
 
 .feat-story-image {
