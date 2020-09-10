@@ -44,6 +44,10 @@ app.get("/profile", (req, res) => {
   res.render("profile");
 });
 
+app.get("/edit-profile", (req, res) => {
+  res.render("edit-profile");
+})
+
 // searches for a provided port by heroku or sets to port
 var port = process.env.PORT || 4001;
 app.listen(port, () => {
