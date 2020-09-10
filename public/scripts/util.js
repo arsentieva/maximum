@@ -19,7 +19,7 @@ export function featuredStoriesHtml(featStory) {
   return `
     <div class ="featuredStory story" id="${featStory.id}">
       <div class="feat-story-image">
-        <img src="/images/story-images/${featStory.id}.jpg">
+        <img src="/images/story-images/${giveImage(featStory.id)}.jpg">
       </div>
       <div class="feat-story-text">
         <h2 class="feat-story-header">${featStory.title}</h2>
