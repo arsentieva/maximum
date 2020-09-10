@@ -33,7 +33,6 @@ const fetchStories = async () => {
   );
   const featStory= stories[1];
   let randomInt = getRandomInt(2, 11)
-  console.log(randomInt)
   const randomStory = stories[randomInt];
   storiesContainer.innerHTML = featuredStoriesHtml(featStory) + featuredStoriesHtml(randomStory) + storiesHtml.join("");
 };

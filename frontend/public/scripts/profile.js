@@ -53,7 +53,6 @@ function addNewStory() {
 async function extractUserFromRes(res) {
   const { user, follow } = await res.json();
   const { id, createdAt } = user;
-  console.log(user)
   const { followersCount, followingCount } = follow;
   currentName = user.name;
   currentBio = user.bio;

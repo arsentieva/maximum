@@ -16,7 +16,6 @@ export function authorCardBuilder(User, storyId, datePublished, useFullYear) {
 };
 
 export function featuredStoriesHtml(featStory) {
-  console.dir(featStory)
   return `
     <div class ="featuredStory story" id="${featStory.id}">
       <div class="feat-story-image">

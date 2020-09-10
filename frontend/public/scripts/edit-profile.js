@@ -29,9 +29,7 @@ const handleEdit = async (name, bio) => {
   const newName = name ? name : "";
   const newBio = bio ? bio : "";
   const id = window.localStorage.getItem("MAXIMUM_CURRENT_USER_ID");
-  console.log(id)
   let body = { id, name: newName, bio: newBio };
-  console.log(body);
   try {
     const res = await fetch(url, {
       method: "PUT",
@@ -43,7 +41,6 @@ const handleEdit = async (name, bio) => {
     });
     console.log("handle edit res json", await res.json())
     if (!res.ok) {
-      console.log(res.status);
       throw res;
     }
     await extractUserFromRes(res);

@@ -35,6 +35,6 @@ signUpForm.addEventListener("submit", async (event) => {
     window.location.href = "/stories";
   } catch (err) {
     //TODO handle errors in one common place
-    console.log(err);
+    console.error(err);
   }
 });
