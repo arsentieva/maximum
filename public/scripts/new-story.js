@@ -3,7 +3,6 @@ const url = `${backendURL}/stories`;
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    // newStoryBlock();
     addNewStory();
   } catch (err) {
     console.error(err);
@@ -23,6 +22,7 @@ async function addNewStory() {
     storyTitle = titleElement.value;
     console.log(storyTitle)
   });
+
   bylineElement.addEventListener("blur", () => {
     storyByline = bylineElement.value;
     console.log(storyByline)
@@ -47,9 +47,8 @@ async function addNewStory() {
 }
 
 const fetchNewStory = async (body) => {
-  // console.log("Line 48")
   try {
-    console.log("Try")
+    // console.log("Try")
     console.log(localStorage.getItem("MAXIMUM_ACCESS_TOKEN"))
     const res = await fetch(url, {
       method: "POST",

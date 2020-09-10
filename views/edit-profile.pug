@@ -1,0 +1,19 @@
+extends layout.pug
+
+block content
+  head
+    link(rel="stylesheet" href="../styles/new-story.css")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    div(class="new-story_container")
+      form(class="new_story" id="new_story")
+          h2 Edit Profile
+          div(class="form-group")
+            label(for="inputTitle") Name
+            input(type="text" class="form-control" id="user-name" placeholder="Name (30 characters max)")
+          div(class="form-group")
+            label(for="inputByline") Bio
+            textarea(class="form-control" id="user-bio" placeholder="Update your biography", cols="30", rows="10")
+            button.btn.btn-primary#save-profile(type='submit') Update
+            //- button.btn.btn-primary#cancel(type='submit') Cancel
+
+    script(type="module" src="../scripts/edit-profile.js")
