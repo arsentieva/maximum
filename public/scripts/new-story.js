@@ -20,17 +20,14 @@ async function addNewStory() {
 
   titleElement.addEventListener("blur", () => {
     storyTitle = titleElement.value;
-    console.log(storyTitle)
   });
 
   bylineElement.addEventListener("blur", () => {
     storyByline = bylineElement.value;
-    console.log(storyByline)
   });
 
   bodyElement.addEventListener("blur", () => {
     storyBody = bodyElement.value;
-    console.log(storyBody)
   });
 
   const publishButton = document.querySelector("#publish");
@@ -48,8 +45,6 @@ async function addNewStory() {
 
 const fetchNewStory = async (body) => {
   try {
-    // console.log("Try")
-    console.log(localStorage.getItem("MAXIMUM_ACCESS_TOKEN"))
     const res = await fetch(url, {
       method: "POST",
       headers: {
@@ -58,16 +53,12 @@ const fetchNewStory = async (body) => {
       },
       body: JSON.stringify(body),
     });
-    console.log("After fetch")
     if (res.status === 401) {
       window.location.href = "/log-in";
       return;
     }
     let data = await res.json();
-    // window.localStorage.setItem("DATA", JSON.stringify(data))
-    // console.log("**********************", data)
     if (!res.ok) {
-      console.log(res.status);
       throw res;
     } else {
       window.location.href = `/stories/${data.story.id}`;

@@ -61,8 +61,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     });
 
-    console.log(res.status)
-
     if (res.status === 401 || res.status === 500) {
       window.location.href = "/log-in";
       return;
@@ -172,7 +170,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         body: JSON.stringify(body),
       });
       if (!res.ok) {
-        console.log(res.status);
         throw res;
       }
 
