@@ -15,6 +15,7 @@ export const fetchUser = async () => {
     return;
   }
   await extractUserFromRes(res);
+  await getUserStories(userId);
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -67,8 +68,11 @@ async function extractUserFromRes(res) {
     followersCount,
     followingCount
   );
+
   userContainer.innerHTML = userHTML;
 }
+
+
 
 function profileBlock(
   id,
@@ -92,15 +96,44 @@ function profileBlock(
             <p class="author-date">Member since ${formatDateFromSequelize(createdAt)}</p>
           </div>
           <div class="user-image">
-              <img src="/images/profile-images/${id}.jpg">
+          <img src="/images/profile-images/${id}.jpg">
           </div>
-        </div>
-        <h4 class="bio-title">Bio:</h4>
-        <p class="user-bio">${biography}</p>
-        <button class="btn btn-primary" id="edit-profile" type="submit">Edit Profile</button>
-      </div>
-    </div>
-`;
+          </div>
+          <h4 class="bio-title">Bio:</h4>
+          <p class="user-bio">${biography}</p>
+          <button class="btn btn-primary" id="edit-profile" type="submit">Edit Profile</button>
+          </div>
+          </div>
+          `;
+
+}
+async function getUserStories(userId) {
+  const res = await fetch(`${backendURL}/stories/`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("MAXIMUM_ACCESS_TOKEN")}`,
+    },
+  })
+  if (res.status === 401 || res.status === 500) {
+    window.location.href = "/log-in";
+    return;
+  }
+  let data = await res.json();
+  let dataLength = data.stories.length;
+  let newData = [];
+  for (let i = 0; i < dataLength; i++) {
+    if (data.stories[i].User.id === Number(userId)) {
+      newData.push(data.stories[i]);
+    }
+  }
+  const storiesContainer = document.querySelector(".stories-container");
+  const storiesHtml = newData.map(
+    ({ id, title, body }) => `
+      <div class="story" id="${id}">\n
+        <a href="/stories/${id}">${title}</a>\n
+      </div>\n
+    `
+  );
+  storiesContainer.innerHTML = storiesHtml.join("");
 
   /* Abandoned User Stories Constructor
     <div class="user-stories-container">
