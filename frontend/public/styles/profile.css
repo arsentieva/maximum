@@ -26,6 +26,7 @@ button {
   border: #006a4e solid 1px;
   border-radius: 5px;
   font-size: 1em;
+  cursor: pointer;
 }
 
 .user-image img {

@@ -1,8 +1,9 @@
-export function authorCardBuilder(User, datePublished, useFullYear) {
+export function authorCardBuilder(User, storyId, datePublished, useFullYear) {
   let dateType = 1;
   let img = '1.png';
   if (useFullYear) dateType = 2;
   if (User.id < 7) img = User.id.toString() + '.jpg';
+  if (!datePublished ) return // For some reason, stories.map on index.js line 19 is returning an extra index, need to break away from it when hit.
   return `
     <div class="author-image">
       <img src="/images/profile-images/${img}">
@@ -16,15 +17,15 @@ export function authorCardBuilder(User, datePublished, useFullYear) {
 
 export function featuredStoriesHtml(featStory) {
   return `
-    <div class ="featuredStory story"  id="${featStory.id}">
+    <div class ="featuredStory story" id="${featStory.id}">
       <div class="feat-story-image">
-        <img src="/images/story-images/${featStory.id}.jpg">
+        <img src="/images/story-images/${giveImage(featStory.id)}.jpg">
       </div>
       <div class="feat-story-text">
         <h2 class="feat-story-header">${featStory.title}</h2>
         <p class="feat-story-byline">${featStory.byline}</p>
         <div class="author-card">
-        ${authorCardBuilder(featStory.User, featStory.createdAt)}
+          ${authorCardBuilder(featStory.User, featStory.User.id, featStory.createdAt)}
         </div>
       </div>
     </div>
@@ -57,6 +58,7 @@ export function formatDateFromSequelize(oldString, formatType) {
   }
 }
 
+// Look into how Random Int is randomly generating image ids
 export function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -64,6 +66,6 @@ export function getRandomInt(min, max) {
 }
 
 export function giveImage(id) {
-  if (id >= 0 && id <= 12) return id;
+  if (id >= 0 && id < 12) return id;
   return getRandomInt(1, 11);
 }

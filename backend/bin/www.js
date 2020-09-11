@@ -15,6 +15,5 @@ db.sequelize
     app.listen(myPort, () => console.log(`Listening on port ${myPort}...`));
   })
   .catch((err) => {
-    console.log("Database connection failure.");
     console.error(err);
   });

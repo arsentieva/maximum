@@ -15,7 +15,6 @@ const fetchStories = async () => {
   const { stories } = await res.json();
 
   const storiesContainer = document.querySelector(".stories-container");
-  console.log(stories);
   const storiesHtml = stories.map(
     ({ title, byline, id, User, createdAt }) => `
         <div class="story story-tile" id="${id}">
@@ -33,8 +32,8 @@ const fetchStories = async () => {
       `
   );
   const featStory= stories[1];
-  // console.log(featStory)
-  const randomStory = stories[getRandomInt(2, 12)];
+  let randomInt = getRandomInt(2, 11)
+  const randomStory = stories[randomInt];
   storiesContainer.innerHTML = featuredStoriesHtml(featStory) + featuredStoriesHtml(randomStory) + storiesHtml.join("");
 };
 
