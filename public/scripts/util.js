@@ -2,8 +2,8 @@ export function authorCardBuilder(User, storyId, datePublished, useFullYear) {
   let dateType = 1;
   let img = '1.png';
   if (useFullYear) dateType = 2;
-  if (User.id < 7) img = User.id.toString() + '.jpg';
-  if (!datePublished ) return // For some reason, stories.map on index.js line 19 is returning an extra index, need to break away from it when hit.
+  if (User.id < 7) img = User.id.toString() + '.jpg'; console.log("Image", img); console.log("User id", User.id)
+  if (!datePublished) return // For some reason, stories.map on index.js line 19 is returning an extra index, need to break away from it when hit.
   return `
     <div class="author-image">
       <img src="/images/profile-images/${img}">
@@ -40,9 +40,9 @@ formatType 1 = Month Day (e.g. 'June 10')
 formatType 2 = Month Day, Year (e.g. 'July 25, 1988') ***IF NO formatType IS SPECIFIED, THIS IS RETURNED BY DEFAULT***
 formatType 3 = array containing day, month, and year as ints (e.g. [30, 9, 1993])*/
 export function formatDateFromSequelize(oldString, formatType) {
-  const year = oldString.slice(0,4);
-  const month = oldString.slice(5,7).toString() - 1;
-  const day = oldString.slice(8,10);
+  const year = oldString.slice(0, 4);
+  const month = oldString.slice(5, 7).toString() - 1;
+  const day = oldString.slice(8, 10);
   const date = new Date(year, month, day);
   const monthString = date.toLocaleString('default', { month: 'long' });
   const dayString = date.getDate();
