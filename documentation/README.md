@@ -35,7 +35,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/arsentieva/maximum">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="./feature-packets/images/maximum-logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">MAXIMUM</h3>
@@ -46,7 +46,7 @@
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br /> -->
     <br />
-    <a href="https://polar-springs-21679.herokuapp.com/">View Demo</a>
+    <a href="https://maximum-front-end.herokuapp.com/">View Demo</a>
     <!-- ·
     <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
     ·
@@ -210,4 +210,4 @@ Project Link: [https://github.com/arsentieva/maximum](https://github.com/arsenti
 [license-url]: https://github.com/arsentieva/repo/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/arsentieva
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: feature-packets/images/maximum.png

@@ -16,6 +16,15 @@
   margin: 20px 0px 10px;
 }
 
+a {
+  color: #1d8065;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 button {
   height: fit-content;
   margin: 0px;
@@ -51,6 +60,15 @@ button {
 
 .bio-title {
   margin-bottom: 5px;
+}
+
+.stories-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.story {
+  margin: 10px 0px;
 }
 
 .user-bio {
