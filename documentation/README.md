@@ -35,10 +35,8 @@
 <br />
 <p align="center">
   <a href="https://github.com/arsentieva/maximum">
-    <img src="./feature-packets/images/maximum-logo.png" alt="Logo" width="80" height="80">
+    <img src="./feature-packets/images/maximum-logo.png" alt="Logo">
   </a>
-
-  <h3 align="center">MAXIMUM</h3>
 
   <p align="center">
     Medium.com clone
@@ -91,7 +89,7 @@ Here's a blank template to get started:
 * [NodeJS](https://nodejs.org/en/about/)
 * [PostreSQL](https://www.postgresql.org/)
 * [PugJS](https://pugjs.org/api/getting-started.html)
-
+* [Sequelize ORM](https://sequelize.org/)
 
 
 <!-- GETTING STARTED -->
