@@ -35,10 +35,8 @@
 <br />
 <p align="center">
   <a href="https://github.com/arsentieva/maximum">
-    <img src=".\documentation\feature-packets\images\maximum-logo.png" alt="Logo" width="80" height="80">
+    <img src="./public/images/readme/maximum-logo.png" alt="Logo">
   </a>
-
-  <h3 align="center">MAXIMUM</h3>
 
   <p align="center">
     Medium.com clone
@@ -91,7 +89,7 @@ Here's a blank template to get started:
 * [NodeJS](https://nodejs.org/en/about/)
 * [PostreSQL](https://www.postgresql.org/)
 * [PugJS](https://pugjs.org/api/getting-started.html)
-
+* [Sequelize ORM](https://sequelize.org/)
 
 
 <!-- GETTING STARTED -->
@@ -210,4 +208,8 @@ Project Link: [https://github.com/arsentieva/maximum](https://github.com/arsenti
 [license-url]: https://github.com/arsentieva/repo/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/arsentieva
+<<<<<<< HEAD:frontend/README.md
+[product-screenshot]: ./public/images/readme/maximum.png
+=======
 [product-screenshot]: documentation/feature-packets/images/maximum.png
+>>>>>>> 4fd9d5f27184aa4f66e1a21cba0c4c9f10ff88fd:README.md
