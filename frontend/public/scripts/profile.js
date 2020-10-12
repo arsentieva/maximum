@@ -125,7 +125,7 @@ async function getUserStories(userId) {
       newData.push(data.stories[i]);
     }
   }
-  const storiesContainer = document.querySelector(".stories-container");
+  const storiesContainer = document.querySelector(".stories-list");
   const storiesHtml = newData.map(
     ({ id, title, body }) => `
       <div class="story" id="${id}">
