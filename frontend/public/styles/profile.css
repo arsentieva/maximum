@@ -67,6 +67,11 @@ button {
   justify-content: flex-start;
 }
 
+.stories-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .story {
   margin: 10px 0px;
 }

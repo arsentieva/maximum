@@ -50,7 +50,7 @@ nav {
 
 .stories-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-around;
   margin-left: 15%;
   margin-right: 15%;
